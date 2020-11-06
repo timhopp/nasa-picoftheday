@@ -3,7 +3,7 @@ import { AppThunk, AppDispatch } from "../store";
 import { Photo } from "../features/photos/types";
 
 
-interface FavoriteState {
+export interface FavoriteState {
   favorites: Photo[]
 }
 

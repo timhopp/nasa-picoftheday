@@ -5,7 +5,7 @@ import { Photo } from "../features/photos/types";
 
 
 //Need an interface to declare the initial states type
-interface PhotoState {
+export interface PhotoState {
   photo: Photo[],
   date: string
   status: 'idle' | 'loading' | 'succeeded' | 'failed',
