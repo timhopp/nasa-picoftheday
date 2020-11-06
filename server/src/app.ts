@@ -17,6 +17,8 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const PORT: string | number = process.env.PORT || 4000
 
+
+
 app.use(cors())
 //parser is required before routes
 app.use(jsonParser)
