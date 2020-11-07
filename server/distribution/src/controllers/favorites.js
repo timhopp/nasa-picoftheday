@@ -17,7 +17,7 @@ const favorite_1 = __importDefault(require("../models/favorite"));
 const getFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const favorites = yield favorite_1.default.find();
-        res.status(200).json({ favorites });
+        res.status(200).json(favorites);
     }
     catch (error) {
         throw error;

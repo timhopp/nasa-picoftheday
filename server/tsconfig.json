@@ -10,5 +10,5 @@
     "composite": true
   },
   "include": ["src/**/**/*"],
-  "exclude": ["src/types/*.ts", "node_modules", ".vscode"]
+  "exclude": [ "node_modules", ".vscode"]
 }

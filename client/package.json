@@ -8,6 +8,7 @@
     "devbuild": "webpack --mode development",
     "build": "./node_modules/.bin/webpack"
   },
+  "proxy": "http://localhost:3000/",
   
   "author": "",
   "license": "ISC",

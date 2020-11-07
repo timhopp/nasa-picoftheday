@@ -79,7 +79,7 @@ const currentPhotoSlice = createSlice ({
       state.updated = true;
       
       state.photo.splice(0, 1, action.payload)
-      console.log(JSON.stringify(state.photo[0]))
+      // console.log(JSON.stringify(state.photo[0]))
       state.updated = false;
     })
   
@@ -98,7 +98,6 @@ const currentPhotoSlice = createSlice ({
       console.log('success')
       state.status = "succeeded";
       state.photo.splice(0, 1, action.payload)
-      console.log('hit builder', JSON.stringify(state.photo[0]))
    
     })
   

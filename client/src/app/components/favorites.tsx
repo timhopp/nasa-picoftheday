@@ -41,7 +41,7 @@ class Favorites extends React.Component<favoriteProps> {
       <div className = "row justify-content-center">
 
           {this.props.favorites.map((fav) => (
-            <Favorite key={this.props.currentPhoto.title} fav={fav}></Favorite>
+            <Favorite key={fav.title} fav={fav}></Favorite>
           ))}
        
       </div>
@@ -58,7 +58,7 @@ const mapStateToProps = (state: RootState ) => {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addFavorite: (photo: Photo) => dispatch(addFavorite(photo))
+    addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite))
   }
 }
 

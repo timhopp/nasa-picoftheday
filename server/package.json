@@ -5,7 +5,7 @@
   "main": "distribution/app.js",
   "scripts": {
     "build": "tsc && node distibution/app.js",
-    "start": "concurrently \"tsc -w\" \"nodemon src/app.ts\"",
+    "start": "concurrently \"tsc -w\" \"nodemon src/app.ts\""
   },
   "author": "",
   "license": "ISC",

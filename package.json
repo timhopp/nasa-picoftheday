@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node build/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node build/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "engines": {
     "node": "12.x",
@@ -20,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/timhopp/nasa-picoftheday/issues"
   },
-  "homepage": "https://github.com/timhopp/nasa-picoftheday#readme"
+  "homepage": "https://github.com/timhopp/nasa-picoftheday#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
 }

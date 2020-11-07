@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentPhoto} from "../app/reducers/currentPhotoSlice";
+import { fetchFavorites } from "../app/reducers/favoriteSlice";
 import thunkMiddleware from "redux-thunk";
 import CurrentPhoto from "../app/components/currentPhoto"
 import Favorites from "../app/components/favorites";
@@ -42,6 +43,7 @@ const error = useSelector((state: RootState) => state.currentPhoto.error)
 useEffect(() => {
   if(photoStatus == 'idle')
   dispatch(fetchCurrentPhoto())
+  dispatch(fetchFavorites())
   //Adding the empty array as a second argument ensures it only is called once. 
   //https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
 }, [])

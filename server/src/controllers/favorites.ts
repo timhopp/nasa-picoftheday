@@ -5,7 +5,7 @@ import Favorite from "../models/favorite"
 const getFavorites = async (req: Request, res: Response): Promise<void> => {
   try {
     const favorites: IFavorite[] = await Favorite.find()
-    res.status(200).json({ favorites })
+    res.status(200).json(favorites)
   } catch (error) {
     throw error
   }

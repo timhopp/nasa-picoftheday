@@ -15,17 +15,10 @@ let jsonParser = bodyParser.json();
 
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const PORT: string | number = process.env.PORT || 4000
+const PORT: string | number = process.env.PORT || 5000
 
 //Figure out how to make api use static build, aka distribution?
-if(process.env.NODE_ENV === 'production'){
-  //set static folder
-  app.use(express.static('client/distribution'));
-}
-// what is my current path? 
-const path = app.get('*',(req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'distribution', 'index.html'));
-});
+
 
 
 
