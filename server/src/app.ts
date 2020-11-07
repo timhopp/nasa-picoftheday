@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "distribution", "index.html"));
+  res.sendFile(path.resolve(__dirname, "index.html"));
 });
 
 const uri: string = `${process.env.CONNECTION_STRING}`
