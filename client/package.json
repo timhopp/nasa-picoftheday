@@ -8,6 +8,7 @@
     "devbuild": "webpack --mode development",
     "build": "./node_modules/.bin/webpack"
   },
+  
   "author": "",
   "license": "ISC",
   "devDependencies": {
