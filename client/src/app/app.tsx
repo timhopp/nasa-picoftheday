@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './App.css';
+import './app.css';
 import rootReducer from "../app/reducers/index";
 import {Provider} from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
