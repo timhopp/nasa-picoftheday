@@ -27,11 +27,12 @@ app.use(routes)
 
 if (process.env.NODE_ENV === "production") {
   //set static folder
-  app.use(express.static("client/distribution"));
+  app.use(express.static(path.join(__dirname,"client/distribution")));
 }
 
 app.get("/", (req, res) => {
-  res.sendFile("client/distribution/index.html");
+  res.sendFile(path.resolve(__dirname, "client/distribution/index.html"));
+  // res.sendFile("client/distribution/index.html");
 });
 
 const uri: string = `${process.env.CONNECTION_STRING}`
@@ -43,7 +44,7 @@ mongoose
   .connect(uri, options)
   .then(() =>
     app.listen(PORT, () =>
-      console.log(`Server running on http://localhost:${PORT}`)
+      console.log(`Server running on port: ${PORT}`)
     )
   )
   .catch(error => {
