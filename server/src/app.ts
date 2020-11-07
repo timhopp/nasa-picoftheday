@@ -9,6 +9,7 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 const app: Express = express()
+const path = require("path")
 
 //jsonParser is required to use req.body
 let jsonParser = bodyParser.json();
@@ -19,6 +20,11 @@ const PORT: string | number = process.env.PORT || 5000
 
 //Figure out how to make api use static build, aka distribution?
 
+if (process.env.NODE_ENV === "production") {
+  //set static folder
+  app.use(express.static("client/distribution"));
+}
+
 
 
 
@@ -26,6 +32,10 @@ app.use(cors())
 //parser is required before routes
 app.use(jsonParser)
 app.use(routes)
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "distribution", "index.html"));
+});
 
 const uri: string = `${process.env.CONNECTION_STRING}`
 // `${process.env.CONNECTION_STRING}`

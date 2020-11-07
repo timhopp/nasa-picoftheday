@@ -8,8 +8,8 @@
     "removeComments": true,
     "sourceMap": true,
     "esModuleInterop": true,
-    "target": "es5",
-    "composite": true
+    "composite": true,
+    "target": "es5"
   },
 
   

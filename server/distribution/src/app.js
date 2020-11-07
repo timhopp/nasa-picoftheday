@@ -31,15 +31,23 @@ const dotenv = __importStar(require("dotenv"));
 //dotenv is required use an .env file, it is not a node.js standard
 dotenv.config();
 const app = express_1.default();
+const path = require("path");
 //jsonParser is required to use req.body
 let jsonParser = body_parser_1.default.json();
 let urlencodedParser = body_parser_1.default.urlencoded({ extended: false });
 const PORT = process.env.PORT || 5000;
 //Figure out how to make api use static build, aka distribution?
+if (process.env.NODE_ENV === "production") {
+    //set static folder
+    app.use(express_1.default.static("client/distribution"));
+}
 app.use(cors_1.default());
 //parser is required before routes
 app.use(jsonParser);
 app.use(routes_1.default);
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "distribution", "index.html"));
+});
 const uri = `${process.env.CONNECTION_STRING}`;
 // `${process.env.CONNECTION_STRING}`
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
