@@ -482,13 +482,13 @@
         "affectsGlobalScope": false
       },
       "./src/app.ts": {
-        "version": "ef974e7b82f86a60435a4d2546d38c2c81c21cd5155c5f86871919f709ff8ddf",
+        "version": "1b3ade1334ddb8e9bc8bc02f4ec1ed71ce6cdb76c26353edc7683e9b5aa3f74e",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
       "./package.json": {
-        "version": "5cf5745dadc0c75f3bf756febebfa0ef12966a8da3ede12455ecc19a33a099d4",
-        "signature": "4f22978c4faf16a0e43f87ce7daadfe1a04c88bb1e4dffd07dc098c472bf4ee4",
+        "version": "cb24d22f41a750fa3b46371c65ab2a3dfc4f2b4386f588e31de13c1d718782c8",
+        "signature": "104b0ada67619ae532bdd40aa1f3a764d1363154382de1b7dd7c398240def473",
         "affectsGlobalScope": true
       }
     },
@@ -502,7 +502,6 @@
       "resolveJsonModule": true,
       "forceConsistentCasingInFileNames": true,
       "composite": true,
-      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

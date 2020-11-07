@@ -1,5 +1,5 @@
 import { Photo } from "../features/photos/types";
-interface PhotoState {
+export interface PhotoState {
     photo: Photo[];
     date: string;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';

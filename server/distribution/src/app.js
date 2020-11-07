@@ -35,6 +35,15 @@ const app = express_1.default();
 let jsonParser = body_parser_1.default.json();
 let urlencodedParser = body_parser_1.default.urlencoded({ extended: false });
 const PORT = process.env.PORT || 4000;
+//Figure out how to make api use static build, aka distribution?
+if (process.env.NODE_ENV === 'production') {
+    //set static folder
+    app.use(express_1.default.static('client/distribution'));
+}
+// what is my current path? 
+const path = app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'distribution', 'index.html'));
+});
 app.use(cors_1.default());
 //parser is required before routes
 app.use(jsonParser);

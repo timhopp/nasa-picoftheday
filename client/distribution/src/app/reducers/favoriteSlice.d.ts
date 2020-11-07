@@ -1,5 +1,5 @@
 import { Photo } from "../features/photos/types";
-interface FavoriteState {
+export interface FavoriteState {
     favorites: Photo[];
 }
 export declare const addFavorite: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<Photo, string>, deleteFavorite: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<Photo, string>;

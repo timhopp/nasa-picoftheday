@@ -22,10 +22,10 @@ if(process.env.NODE_ENV === 'production'){
   //set static folder
   app.use(express.static('client/distribution'));
 }
-//what is my current path? 
-// app.get('*',(req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'client', 'distribution', 'index.html'));
-// });
+// what is my current path? 
+const path = app.get('*',(req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'distribution', 'index.html'));
+});
 
 
 
