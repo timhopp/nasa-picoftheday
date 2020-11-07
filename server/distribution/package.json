@@ -4,7 +4,7 @@
   "description": "",
   "main": "distribution/app.js",
   "scripts": {
-      "build": "tsc && node distibution/app.js",
+      "build": "tsc && node distibution/js/app.js",
       "start": "concurrently \"tsc -w\" \"nodemon src/app.ts\""
   },
   "author": "",

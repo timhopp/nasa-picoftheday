@@ -26,5 +26,8 @@
   "homepage": "https://github.com/timhopp/nasa-picoftheday#readme",
   "devDependencies": {
     "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "webpack": "^5.4.0"
   }
 }
