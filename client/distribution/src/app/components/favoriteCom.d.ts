@@ -2,7 +2,7 @@ import React from "react";
 import { Photo } from "../features/photos/types";
 interface favProps {
     fav: Photo;
-    deleteFavorite: (fav: Photo) => void;
+    removeFavorite: (fav: Photo) => void;
 }
 declare class Favorite extends React.Component<favProps> {
     constructor(props: favProps);
