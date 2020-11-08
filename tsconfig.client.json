@@ -2,9 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "module": "commonjs",
-    "noImplicitAny": true,
-  
-    "outDir": "./client/distribution/",
+    "outDir": "./distribution/",
     "rootDir": "./client",
     "preserveConstEnums": true,
     "removeComments": true,
