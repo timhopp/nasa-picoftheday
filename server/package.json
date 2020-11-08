@@ -2,9 +2,9 @@
   "name": "nasa-picofday",
   "version": "1.0.0",
   "description": "",
-  "main": "distribution/app.js",
+  "main": "distribution/app.js && node distribution/src/app.js",
   "scripts": {
-    "build": "tsc && node distribution/app.js",
+    "build": "tsc --p tsconfig.server.json ",
     "start": "concurrently \"tsc -w\" \"nodemon src/app.ts\""
   },
   "author": "",

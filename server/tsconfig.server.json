@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./distribution/",
-    "rootDir": "./server",
+    "outDir": "./distribution",
     "strict": true,
     "esModuleInterop": true,
     "removeComments": true,
@@ -12,7 +11,7 @@
     "composite": true
   },
   "extends": "../tsconfig.json",
-  "include": ["server/src/**/**/*"],
-  "exclude": [ "node_modules", ".vscode", "./client", ".server/distribution", "./client/distribution"],
+  "include": ["src/**/**/*"],
+  "exclude": [ "node_modules", ".vscode", ".server/distribution"],
 
 }

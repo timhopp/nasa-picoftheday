@@ -1,1 +1,1 @@
-module.exports = require("./server/distribution/app");
+module.exports = require("./server/distribution/src/app");
