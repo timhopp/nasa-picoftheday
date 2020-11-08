@@ -1,7 +1,7 @@
 import React from "react";
 import { Photo } from "../features/photos/types";
 import { connect } from "react-redux"
-import { AppDispatch, RootState } from "../store"
+import { AppDispatch } from "../store"
 import { removeFavorite } from "../reducers/favoriteSlice";
 
 interface favProps {

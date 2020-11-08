@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import  store  from "../store"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
 import moment from "moment"
-import { connect } from "react-redux"
-import { AppDispatch, RootState } from "../store" 
 
 
 interface DateProps {

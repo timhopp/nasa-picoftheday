@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk} from"@reduxjs/toolkit";
-import { AppThunk, AppDispatch } from "../store";
 import { Photo } from "../features/photos/types";
 import axios from "axios"
 

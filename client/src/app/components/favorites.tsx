@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux"
 import { AppDispatch, RootState } from "../store"
 import { addFavorite } from "../reducers/favoriteSlice";
-import { fetchPhotoByDate } from "../reducers/currentPhotoSlice";
 import { Photo } from "../features/photos/types";
 import DateSelector from "./datePicker";
 import Favorite from "./favoriteCom";
