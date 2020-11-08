@@ -4,10 +4,14 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "allowJs": true,
+    "jsx": "react",
 
   },
   "include": [
     "client",
     "server"
   ],
+  "exclude": [
+    "node_modules", "./server/distribution", "./client/distribution", "./client/webpack.config.js"
+  ]
 }

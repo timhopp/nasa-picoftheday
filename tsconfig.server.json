@@ -5,7 +5,6 @@
     "outDir": "./server/distribution/",
     "rootDir": "./server",
     "strict": true,
-
     "esModuleInterop": true,
     "removeComments": true,
     "resolveJsonModule": true,
@@ -14,6 +13,6 @@
   },
   "extends": "../tsconfig.json",
   "include": ["server/src/**/**/*"],
-  "exclude": [ "node_modules", ".vscode", "./client", "./server/distribution"],
+  "exclude": [ "node_modules", ".vscode", "./client", ".server/distribution", "./client/distribution"],
 
 }

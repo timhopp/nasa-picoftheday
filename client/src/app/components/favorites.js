@@ -28,26 +28,18 @@ var Favorites = /** @class */ (function (_super) {
     }
     Favorites.prototype.render = function () {
         var _this = this;
-        return (<div className="container-fluid">
-       <div className="row justify-content-center">
-      <div className="col">
-
-      <button className="btn btn-success" onClick={function () { return _this.props.addFavorite(_this.props.currentPhoto); }}> Favorite</button>
-      </div>
-      <div> You have {this.props.favorites.length} favorites</div>
-      <div className="col">
-
-
-      <div className="">Date</div>
-        <datePicker_1["default"]></datePicker_1["default"]> 
-      </div>
-      </div>
-      <div className="row justify-content-center">
-
-          {this.props.favorites.map(function (fav) { return (<favoriteCom_1["default"] key={fav.title} fav={fav}></favoriteCom_1["default"]>); })}
-       
-      </div>
-    </div>);
+        return (react_1["default"].createElement("div", { className: "container-fluid" },
+            react_1["default"].createElement("div", { className: "row justify-content-center" },
+                react_1["default"].createElement("div", { className: "col" },
+                    react_1["default"].createElement("button", { className: "btn btn-success", onClick: function () { return _this.props.addFavorite(_this.props.currentPhoto); } }, " Favorite")),
+                react_1["default"].createElement("div", null,
+                    " You have ",
+                    this.props.favorites.length,
+                    " favorites"),
+                react_1["default"].createElement("div", { className: "col" },
+                    react_1["default"].createElement("div", { className: "" }, "Date"),
+                    react_1["default"].createElement(datePicker_1["default"], null))),
+            react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement(favoriteCom_1["default"], { key: fav.title, fav: fav })); }))));
     };
     return Favorites;
 }(react_1["default"].Component));

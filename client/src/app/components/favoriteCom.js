@@ -27,14 +27,11 @@ var Favorite = /** @class */ (function (_super) {
     }
     Favorite.prototype.render = function () {
         var _this = this;
-        return (<div className="col-3 p-2 bg-info m-3">
-        <div className="row justify-content-center">{this.props.fav.title}</div>
-        <div className="row justify-content-center">
-        <img className="favimg " src={this.props.fav.url} alt="Image Not Available"></img>
-
-        </div>
-        <button className="btn btn-danger" onClick={function () { return _this.props.removeFavorite(_this.props.fav); }}>Remove</button>
-      </div>);
+        return (react_1["default"].createElement("div", { className: "col-3 p-2 bg-info m-3" },
+            react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.fav.title),
+            react_1["default"].createElement("div", { className: "row justify-content-center" },
+                react_1["default"].createElement("img", { className: "favimg ", src: this.props.fav.url, alt: "Image Not Available" })),
+            react_1["default"].createElement("button", { className: "btn btn-danger", onClick: function () { return _this.props.removeFavorite(_this.props.fav); } }, "Remove")));
     };
     return Favorite;
 }(react_1["default"].Component));

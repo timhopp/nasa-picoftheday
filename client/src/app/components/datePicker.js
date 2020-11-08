@@ -45,7 +45,7 @@ var DateSelector = /** @class */ (function (_super) {
     };
     DateSelector.prototype.render = function () {
         var startDate = this.state.startDate;
-        return (<react_datepicker_1["default"] className="m-5" dateFormat="yyyy/MM/dd" selected={startDate} onChange={this.handleChange} showYearDropdown/>);
+        return (react_1["default"].createElement(react_datepicker_1["default"], { className: "m-5", dateFormat: "yyyy/MM/dd", selected: startDate, onChange: this.handleChange, showYearDropdown: true }));
     };
     return DateSelector;
 }(react_1["default"].Component));

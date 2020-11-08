@@ -38,9 +38,8 @@ var middlewareEnhancer = redux_1.applyMiddleware(redux_thunk_1["default"]);
 var composedEnhancers = redux_1.compose(middlewareEnhancer);
 var AppWrapper = function () {
     var store = redux_1.createStore(index_1["default"], undefined, composedEnhancers);
-    return (<react_redux_1.Provider store={store}>
-      <App />
-    </react_redux_1.Provider>);
+    return (react_1["default"].createElement(react_redux_1.Provider, { store: store },
+        react_1["default"].createElement(App, null)));
 };
 var App = function () {
     //Why should I use useDispatch here instead of AppDispatch? What exactly is the difference for Typescript? 
@@ -60,30 +59,21 @@ var App = function () {
     var content;
     if (photoStatus === 'loading') {
         content =
-            <div> Loading </div>;
+            react_1["default"].createElement("div", null, " Loading ");
     }
     else if (photoStatus === 'succeeded') {
         content =
-            <div>
-   <currentPhoto_1["default"]></currentPhoto_1["default"]>
-
-    </div>;
+            react_1["default"].createElement("div", null,
+                react_1["default"].createElement(currentPhoto_1["default"], null));
     }
     else if (photoStatus === 'failed') {
         content =
-            <div>{error}</div>;
+            react_1["default"].createElement("div", null, error);
     }
-    return (<div className="App">
-      <header className="App-header">
-       NASA Picture of The Day App
-      </header>
-    <div>
-    {content}
-       <favorites_1["default"]></favorites_1["default"]>
-    </div>
-
-
-
-    </div>);
+    return (react_1["default"].createElement("div", { className: "App" },
+        react_1["default"].createElement("header", { className: "App-header" }, "NASA Picture of The Day App"),
+        react_1["default"].createElement("div", null,
+            content,
+            react_1["default"].createElement(favorites_1["default"], null))));
 };
 exports["default"] = AppWrapper;

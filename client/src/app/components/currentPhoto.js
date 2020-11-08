@@ -72,22 +72,17 @@ var CurrentPhoto = /** @class */ (function (_super) {
     // const fetchNewDate = useCallback(() => {
     // })
     CurrentPhoto.prototype.render = function () {
-        return (<div className="container-fluid">
-      <div className="row align-items-center">
-      <button className="col btn btn-info ml-2" 
-        //Cannot call the function, as it returns void and is not assignable to onClick. So you need a new function that calls handleChange
-        //WHY does that not work though? has to call directly???
-        onClick={this.fetchPrevious}>Previous</button>
-      <div className="col-8">
-        <h2>{this.props.currentPhoto.title}</h2>
-        <img className="img" src={this.props.currentPhoto.url} alt="Image Not Available"></img>
-        <p>{this.props.currentPhoto.explanation}</p>
-        
-        </div>
-      <button className="col btn btn-info mr-2" onClick={this.fetchNext}>Next</button>
-      </div>
-  
-    </div>);
+        return (react_1["default"].createElement("div", { className: "container-fluid" },
+            react_1["default"].createElement("div", { className: "row align-items-center" },
+                react_1["default"].createElement("button", { className: "col btn btn-info ml-2", 
+                    //Cannot call the function, as it returns void and is not assignable to onClick. So you need a new function that calls handleChange
+                    //WHY does that not work though? has to call directly???
+                    onClick: this.fetchPrevious }, "Previous"),
+                react_1["default"].createElement("div", { className: "col-8" },
+                    react_1["default"].createElement("h2", null, this.props.currentPhoto.title),
+                    react_1["default"].createElement("img", { className: "img", src: this.props.currentPhoto.url, alt: "Image Not Available" }),
+                    react_1["default"].createElement("p", null, this.props.currentPhoto.explanation)),
+                react_1["default"].createElement("button", { className: "col btn btn-info mr-2", onClick: this.fetchNext }, "Next"))));
     };
     return CurrentPhoto;
 }(react_1["default"].Component));

@@ -25,4 +25,4 @@ exports.__esModule = true;
 var React = __importStar(require("react"));
 var ReactDOM = __importStar(require("react-dom"));
 var app_1 = __importDefault(require("./app"));
-ReactDOM.render(<app_1["default"] />, document.getElementById('root'));
+ReactDOM.render(React.createElement(app_1["default"], null), document.getElementById('root'));
