@@ -25,15 +25,12 @@ const addFavorite = async ( req: Request, res: Response): Promise<void> => {
       copyright: body.copyright
     })
 
-    // const newFavorite: InstanceType<IFavorite> = await
-     favorite.save()
+    const newFavorite: InstanceType<IFavorite> = await favorite.save()
     const allFavorites: IFavorite[] = await Favorite.find()
 
     res 
     .status(201)
-    .json({message:'Favorite Added', 
-    // favorite: newFavorite, 
-    favorites: allFavorites})
+    .json({message:'Favorite Added', favorite: newFavorite, favorites: allFavorites})
   } catch (error) {
     throw error
   }

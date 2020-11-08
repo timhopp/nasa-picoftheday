@@ -6,5 +6,6 @@ export interface IFavorite extends Document {
   title: string,
   copyright: string,
   explanation: string,
-  url: string
+  url: string,
+  save: any
 }
