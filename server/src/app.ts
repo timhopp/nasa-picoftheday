@@ -16,7 +16,7 @@ let jsonParser = bodyParser.json();
 
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const PORT: string | number = process.env.PORT || 5000
+const PORT: string | number = process.env.PORT || 3000
 
 app.use(cors())
 //parser is required before routes
@@ -28,12 +28,13 @@ app.use(routes)
 if (process.env.NODE_ENV === "production") {
   //set static folder
   app.use(express.static("client/distribution"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "distribution", "index.html"));
+    // res.sendFile("client/distribution/index.html");
+  });
 }
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "distribution", "index.html"));
-  // res.sendFile("client/distribution/index.html");
-});
+
 
 const uri: string = `${process.env.CONNECTION_STRING}`
 // `${process.env.CONNECTION_STRING}`
