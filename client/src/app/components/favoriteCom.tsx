@@ -18,9 +18,11 @@ class Favorite extends React.Component<favProps>{
   render(){
     return (
       <div className="col-3 p-2 bg-info m-3">
-        <div>{this.props.fav.title}</div>
+        <div className="row justify-content-center">{this.props.fav.title}</div>
+        <div className="row justify-content-center">
+        <img className="favimg " src={this.props.fav.url} alt="Image Not Available"></img>
 
-        <img className="favimg" src={this.props.fav.url} alt="Image Not Available"></img>
+        </div>
         <button className="btn btn-danger" onClick={() => this.props.removeFavorite(this.props.fav)}>Remove</button>
       </div>
     )
