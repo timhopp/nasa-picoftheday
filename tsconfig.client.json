@@ -3,7 +3,9 @@
     "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,
+    "allowJs": true,
     "outDir": "./distribution/",
+    "rootDir": "./client",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
@@ -12,9 +14,9 @@
     "target": "es5"
   },
 
-  
+  "extends": "../tsconfig.json",
   "include": [
-    "./src/**/**/*"
+    "src/**/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./server"]
 }

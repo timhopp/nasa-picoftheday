@@ -482,9 +482,14 @@
         "affectsGlobalScope": false
       },
       "../src/app.ts": {
-        "version": "b479c037c3ce67cab229d23c29b9000df630a398524504d54aa9e1fe8a52b3ba",
+        "version": "c07e8196e2d31427261ba757efadf9b2c105ae821f8cce26a7eb572c0268c4f5",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
+      },
+      "../package.json": {
+        "version": "4b22c4537bdeaedc85e06e0c471c524a847547ca9cae54fa52551c9c2bdd9994",
+        "signature": "104b0ada67619ae532bdd40aa1f3a764d1363154382de1b7dd7c398240def473",
+        "affectsGlobalScope": true
       },
       "../../node_modules/@types/eslint/helpers.d.ts": {
         "version": "f345b0888d003fd69cb32bad3a0aa04c615ccafc572019e4bd86a52bd5e49e46",
@@ -518,10 +523,10 @@
       "outDir": "./",
       "strict": true,
       "esModuleInterop": true,
+      "removeComments": true,
       "resolveJsonModule": true,
       "forceConsistentCasingInFileNames": true,
       "composite": true,
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -1071,6 +1076,7 @@
       "../../node_modules/@types/node/worker_threads.d.ts",
       "../../node_modules/@types/node/zlib.d.ts",
       "../node_modules/dotenv/types/index.d.ts",
+      "../package.json",
       "../src/app.ts",
       "../src/controllers/favorites.ts",
       "../src/models/favorite.ts",

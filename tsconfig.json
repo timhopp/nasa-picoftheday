@@ -1,8 +1,13 @@
 {
-  "references": [
-    {
-    "path": "./client"
-  }, {
-    "path": "./server"
-  }]
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+
+  },
+  "include": [
+    "client",
+    "server"
+  ],
 }

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./server/distribution/",
+    "rootDir": "./server",
+    "strict": true,
+
+    "esModuleInterop": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true
+  },
+  "extends": "../tsconfig.json",
+  "include": ["server/src/**/**/*"],
+  "exclude": [ "node_modules", ".vscode", "./client", "./server/distribution"],
+
+}
