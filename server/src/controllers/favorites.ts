@@ -1,6 +1,7 @@
 import { Response, Request } from "express"
 import { IFavorite } from "../types/favorite"
 import Favorite from "../models/favorite"
+import { InstanceType} from "typegoose"
 
 const getFavorites = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -24,7 +25,7 @@ const addFavorite = async ( req: Request, res: Response): Promise<void> => {
       copyright: body.copyright
     })
 
-    const newFavorite: IFavorite = await favorite.save()
+    const newFavorite: InstanceType<IFavorite> = await favorite.save()
     const allFavorites: IFavorite[] = await Favorite.find()
 
     res 
