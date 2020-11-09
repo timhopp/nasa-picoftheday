@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import App from "./app";
+import App from "./app";
 import { Provider } from "react-redux"
 import store from "../app/store"
 
 function render() {
-const App = require('./App').default
+// const App = require('./App').default
 
   ReactDOM.render(
   <Provider store={store}>
@@ -17,6 +17,6 @@ const App = require('./App').default
 
 render();
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./App', render)
-}
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//   module.hot.accept('./App', render)
+// }
