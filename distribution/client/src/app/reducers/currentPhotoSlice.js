@@ -47,14 +47,14 @@ var initialState = {
     photo: [],
     date: "",
     status: 'idle',
-    updated: false,
+    // updated: false, 
     error: null
 };
 exports.fetchCurrentPhoto = toolkit_1.createAsyncThunk("reducers/fetchCurrentPhoto", function () { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=2020-11-01")];
+            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5")];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
@@ -92,7 +92,8 @@ var currentPhotoSlice = toolkit_1.createSlice({
         builder.addCase(exports.fetchCurrentPhoto.fulfilled, function (state, action) {
             console.log('success');
             state.status = "succeeded";
-            state.photo.splice(0, 1, action.payload);
+            // state.photo.splice(0, 1, action.payload)
+            state.photo[0] = action.payload;
             // console.log(JSON.stringify(state.photo[0]))
         });
         builder.addCase(exports.fetchCurrentPhoto.rejected, function (state, action) {
@@ -106,9 +107,10 @@ var currentPhotoSlice = toolkit_1.createSlice({
         });
         builder.addCase(exports.fetchPhotoByDate.fulfilled, function (state, action) {
             state.status = "succeeded";
-            state.photo.slice(0, 1);
             // state.photo.slice(0, 1)
-            state.photo = state.photo.concat(action.payload);
+            // state.photo.slice(0, 1)
+            // state.photo[0] = action.payload
+            state.photo.push(action.payload);
             // state.photo.push(action.payload)
             // console.log('photo changed')
             // ...state,

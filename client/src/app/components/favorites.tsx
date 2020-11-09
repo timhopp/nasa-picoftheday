@@ -1,6 +1,7 @@
 import React,{ Component } from "react";
 import { connect } from "react-redux"
-import { AppDispatch, RootState } from "../store"
+import { AppDispatch} from "../store"
+import { RootState } from "../reducers/index";
 import { addFavorite } from "../reducers/favoriteSlice";
 import { Photo } from "../features/photos/types";
 import DateSelector from "./datePicker";
@@ -46,7 +47,7 @@ class Favorites extends React.Component<favoriteProps> {
         </div>
         <div className="row justify-content-center">
           {this.props.favorites.map((fav) => (
-            <div className="col-3 bg-info m-3"  data-toggle="modal" data-target="#exampleModal">
+            <div className="col-3 bg-info m-3" key={fav._id} data-toggle="modal" data-target="#exampleModal">
               <Favorite key={fav.title} fav={fav}></Favorite>
 
             </div>

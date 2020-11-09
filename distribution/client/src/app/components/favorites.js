@@ -43,7 +43,7 @@ var Favorites = /** @class */ (function (_super) {
                 react_1["default"].createElement("div", { className: "container-fluid" },
                     react_1["default"].createElement("div", { className: "row justify-content-center" },
                         react_1["default"].createElement("h5", null, "Favorites")),
-                    react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-3 bg-info m-3", "data-toggle": "modal", "data-target": "#exampleModal" },
+                    react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-3 bg-info m-3", key: fav._id, "data-toggle": "modal", "data-target": "#exampleModal" },
                         react_1["default"].createElement(favoriteCom_1["default"], { key: fav.title, fav: fav }))); })))),
             this.props.currentFav ?
                 react_1["default"].createElement("div", { className: "modal", id: "exampleModal", role: "dialog" },

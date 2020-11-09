@@ -3,12 +3,19 @@ import { ThunkAction } from "redux-thunk"
 // import { useDispatch } from "react-redux";
 
 import rootReducer from "../app/reducers/index";
-
-export type RootState = ReturnType<typeof rootReducer>
+import { RootState } from "./reducers/index";
 
 const store = configureStore({
   reducer: rootReducer,
 });
+
+if (process.env.NODE_ENV === 'development' && module.hot) {
+  module.hot.accept("../app/reducers/index", () => {
+    const newRootReducer = require("../app/reducers/index").default
+    store.replaceReducer(newRootReducer)
+  })
+}
+
 
 export type AppDispatch = typeof store.dispatch
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>

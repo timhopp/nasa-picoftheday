@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import { RootState } from "../store"
+import { RootState } from "../reducers/index"
 import { Photo } from "../features/photos/types"
 
 export default function CurrentFav () {

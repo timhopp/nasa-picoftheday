@@ -10,7 +10,8 @@ import thunkMiddleware from "redux-thunk";
 import CurrentPhoto from "../app/components/currentPhoto"
 import Favorites from "../app/components/favorites";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { RootState } from "../app/store"
+import { RootState } from "./reducers/index"
+import { Photo } from "./features/photos/types"
 
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware);
@@ -36,6 +37,7 @@ const dispatch = useDispatch();
 //Need to export RootState and set state type to RootState to access reducers
 const photoStatus : string = useSelector((state: RootState) => state.currentPhoto.status)
 const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
+const photo : Photo[] = useSelector((state: RootState) => state.currentPhoto.photo)
 
 
 useEffect(() => {

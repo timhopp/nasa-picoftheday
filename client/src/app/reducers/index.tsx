@@ -8,10 +8,11 @@ import favoriteSlice from "./favoriteSlice";
 
 
 const rootReducer = combineReducers({
-currentPhoto: currentPhotoSlice,
-favorites: favoriteSlice
+  currentPhoto: currentPhotoSlice,
+  favorites: favoriteSlice
 });
 
-// export type Rootstate = ReturnType<typeof rootReducer>;
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;

@@ -1,7 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from"@reduxjs/toolkit";
-import axios from "axios";
-import { STATES } from "mongoose";
+import { createSlice, PayloadAction, createAsyncThunk  } from "@reduxjs/toolkit";
 import { Photo } from "../features/photos/types";
+import axios from "axios";
 
 
 //Need an interface to declare the initial states type
@@ -9,7 +8,7 @@ export interface PhotoState {
   photo: Photo[],
   date: string
   status: 'idle' | 'loading' | 'succeeded' | 'failed',
-  updated: boolean
+  // updated: boolean
   error: string | null | undefined
 }
 
@@ -19,7 +18,7 @@ const initialState: PhotoState = {
   photo: [] as Photo[],
   date: "",
   status: 'idle',
-  updated: false, 
+  // updated: false, 
   error: null
 }
 
@@ -27,7 +26,7 @@ export const fetchCurrentPhoto = createAsyncThunk(
   "reducers/fetchCurrentPhoto",
   async () => {
      const response = await axios.get<Photo>(
-      "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=2020-11-01"
+      "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5"
     
     );
    return response.data;
@@ -43,7 +42,7 @@ export const fetchPhotoByDate =  createAsyncThunk(
         await axios.get<Photo>(
         "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
       )
-      return response.data
+      return response.data;
     }
   
 )
@@ -70,7 +69,8 @@ const currentPhotoSlice = createSlice ({
     builder.addCase(fetchCurrentPhoto.fulfilled, (state, action) => {
       console.log('success')
       state.status = "succeeded";
-      state.photo.splice(0, 1, action.payload)
+      // state.photo.splice(0, 1, action.payload)
+      state.photo[0] = action.payload;
       // console.log(JSON.stringify(state.photo[0]))
     })
   
@@ -87,9 +87,10 @@ const currentPhotoSlice = createSlice ({
   })
     builder.addCase(fetchPhotoByDate.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.photo.slice(0, 1)
       // state.photo.slice(0, 1)
-      state.photo = state.photo.concat(action.payload)
+      // state.photo.slice(0, 1)
+      // state.photo[0] = action.payload
+      state.photo.push(action.payload)
       // state.photo.push(action.payload)
       // console.log('photo changed')
 
@@ -114,3 +115,4 @@ const currentPhotoSlice = createSlice ({
    export const { setDate } = currentPhotoSlice.actions
 
 export default currentPhotoSlice.reducer;
+

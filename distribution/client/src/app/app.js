@@ -47,6 +47,7 @@ var App = function () {
     //Need to export RootState and set state type to RootState to access reducers
     var photoStatus = react_redux_2.useSelector(function (state) { return state.currentPhoto.status; });
     var error = react_redux_2.useSelector(function (state) { return state.currentPhoto.error; });
+    var photo = react_redux_2.useSelector(function (state) { return state.currentPhoto.photo; });
     react_1.useEffect(function () {
         if (photoStatus == 'idle')
             dispatch(currentPhotoSlice_1.fetchCurrentPhoto());

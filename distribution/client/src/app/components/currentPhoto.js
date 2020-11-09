@@ -21,7 +21,7 @@ var react_redux_1 = require("react-redux");
 var currentPhotoSlice_1 = require("../reducers/currentPhotoSlice");
 var moment_1 = __importDefault(require("moment"));
 var store_1 = __importDefault(require("../store"));
-var photo_1 = __importDefault(require("./photo"));
+var photo_1 = require("./photo");
 //You need to define the prop { photo } then state that the prop is a type Photo
 var CurrentPhoto = /** @class */ (function (_super) {
     __extends(CurrentPhoto, _super);
@@ -74,14 +74,19 @@ var CurrentPhoto = /** @class */ (function (_super) {
             react_1["default"].createElement("div", { className: "row align-items-center" },
                 react_1["default"].createElement("button", { className: "col btn btn-info ml-5", onClick: this.fetchPrevious }, "Previous"),
                 react_1["default"].createElement("div", { className: "col-8" },
-                    react_1["default"].createElement(photo_1["default"], null)),
-                react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next"))));
+                    react_1["default"].createElement(photo_1.PhotoCom, null)),
+                react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next")),
+            react_1["default"].createElement("h1", null,
+                "Current Date",
+                this.props.date)));
     };
     return CurrentPhoto;
 }(react_1["default"].Component));
 var mapStateToProps = function (state) {
+    console.log('map hit');
     return {
-        currentPhoto: state.currentPhoto.photo[0]
+        currentPhoto: state.currentPhoto.photo[0],
+        date: state.currentPhoto.date
     };
 };
 // const mapDispatchToProps = (dispatch: AppDispatch) => {

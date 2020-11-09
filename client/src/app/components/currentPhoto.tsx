@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 
 import { fetchPhotoByDate } from "../reducers/currentPhotoSlice";
 import moment from "moment";
-import store, { RootState } from "../store";
-import PhotoCom from "./photo"
+import store from "../store";
+import { RootState } from "../reducers/index"
+import { PhotoCom } from "./photo"
 interface currentProps {
   currentPhoto: Photo
+  date: string
   //currently optional because it may or may not be dispatched??
   fetchPhotoByDate?: (newDate: string) => void
 }
@@ -64,6 +66,7 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
     store.dispatch(fetchPhotoByDate(newDate));
   }
 
+
   render() {
     return (
       <div className="container-fluid">
@@ -80,14 +83,17 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
             Next
           </button>
         </div>
+        <h1>Current Date{this.props.date}</h1> 
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: RootState) => {
+  console.log('map hit')
   return {
     currentPhoto: state.currentPhoto.photo[0],
+    date: state.currentPhoto.date
   }
 }
 // const mapDispatchToProps = (dispatch: AppDispatch) => {

@@ -13,5 +13,4 @@ var rootReducer = redux_1.combineReducers({
     currentPhoto: currentPhotoSlice_1["default"],
     favorites: favoriteSlice_1["default"]
 });
-// export type Rootstate = ReturnType<typeof rootReducer>;
 exports["default"] = rootReducer;

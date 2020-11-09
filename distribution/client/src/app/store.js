@@ -9,6 +9,12 @@ var index_1 = __importDefault(require("../app/reducers/index"));
 var store = toolkit_1.configureStore({
     reducer: index_1["default"]
 });
+if (process.env.NODE_ENV === 'development' && module.hot) {
+    module.hot.accept("../app/reducers/index", function () {
+        var newRootReducer = require("../app/reducers/index")["default"];
+        store.replaceReducer(newRootReducer);
+    });
+}
 //Note -- Do I need this? Why ?
 // export const useAppDispatch = () => useDispatch<AppDispatch>();
 exports["default"] = store;

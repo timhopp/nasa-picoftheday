@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk} from"@reduxjs/toolkit";
 import { Photo } from "../features/photos/types";
 import axios from "axios"
-import PhotoCom from "../components/photo";
-import favorite from "../../../../server/src/models/favorite";
+
 
 
 export interface FavoriteState {
@@ -16,7 +15,7 @@ export interface FavoriteState {
 //   duplicate: number
 // }
 //Does this simply ensure an empy array is only Photo types? 
-let initialState: FavoriteState = {
+const initialState: FavoriteState = {
 favorites: [] as Photo[],
 currentFavorite: [] as Photo [],
 status: 'idle',
