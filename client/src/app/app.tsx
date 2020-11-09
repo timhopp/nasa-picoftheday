@@ -34,42 +34,41 @@ const App = () => {
 const dispatch = useDispatch();
 
 //Need to export RootState and set state type to RootState to access reducers
-const photoStatus = useSelector((state: RootState) => state.currentPhoto.status)
-const error = useSelector((state: RootState) => state.currentPhoto.error)
-// const currentPhoto = useSelector((state: RootState) => state.currentPhoto.photo[0]); 
-// const updated = useSelector((state: RootState) => state.currentPhoto.updated )
+const photoStatus : string = useSelector((state: RootState) => state.currentPhoto.status)
+const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
 
 
 useEffect(() => {
   if(photoStatus == 'idle')
   dispatch(fetchCurrentPhoto())
   dispatch(fetchFavorites())
-  //Adding the empty array as a second argument ensures it only is called once. 
-  //https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
+  //Adding the empty array as a second argument ensures it only is called once.
 }, [])
-
-
-
 
 let content 
 if(photoStatus === 'loading'){
    content =
-  <div> Loading </div>
+  <div>
+  <h1>NASA Picture of The Day</h1>
+  <p> Loading</p>
+   </div>
+
 } else if (photoStatus === 'succeeded') {
    content = 
   <div>
+    <h1>NASA Picture of The Day</h1>
    <CurrentPhoto></CurrentPhoto>
-
     </div>
 } else if (photoStatus === 'failed') {
    content = 
-   <div>{error}</div> 
+   <div>
+       <h1>NASA Picture of The Day</h1>
+     {error}</div> 
  }
 
   return (
     <div className="App">
       <header className="App-header">
-       NASA Picture of The Day App
       </header>
     <div>
     {content}

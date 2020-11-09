@@ -3,6 +3,7 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "allowJs": true,
+    "outDir": "./distribution",
     "jsx": "react",
 
   },

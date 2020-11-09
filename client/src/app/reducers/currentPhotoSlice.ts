@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from"@reduxjs/toolkit";
 import axios from "axios";
+import { STATES } from "mongoose";
 import { Photo } from "../features/photos/types";
 
 
@@ -13,7 +14,7 @@ export interface PhotoState {
 }
 
 
-let initialState: PhotoState = {
+const initialState: PhotoState = {
   //Array of photo types
   photo: [] as Photo[],
   date: "",
@@ -26,7 +27,7 @@ export const fetchCurrentPhoto = createAsyncThunk(
   "reducers/fetchCurrentPhoto",
   async () => {
      const response = await axios.get<Photo>(
-      "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5"
+      "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=2020-11-01"
     
     );
    return response.data;
@@ -49,21 +50,15 @@ export const fetchPhotoByDate =  createAsyncThunk(
 
 
 
-
 const currentPhotoSlice = createSlice ({
   name: "currentPhoto",
   initialState,
   reducers: {
-    // setCurrentPhoto(state, action: PayloadAction<Photo>) {
-    //   state.photo.push(action.payload)
-    //   // state.photoLoaded = true;
-    //   console.log(JSON.stringify(state.photo[0]))
-    // },
     setDate(state, action: PayloadAction<string>) {
      state.date = ""
      state.date = state.date.concat(action.payload)
       console.log(JSON.stringify(state.date))
-    }
+    },
   },
 
   //State can be mutated directly since it uses Immer behind the scenes
@@ -75,11 +70,8 @@ const currentPhotoSlice = createSlice ({
     builder.addCase(fetchCurrentPhoto.fulfilled, (state, action) => {
       console.log('success')
       state.status = "succeeded";
-      state.updated = true;
-      
       state.photo.splice(0, 1, action.payload)
       // console.log(JSON.stringify(state.photo[0]))
-      state.updated = false;
     })
   
     builder.addCase(fetchCurrentPhoto.rejected, (state, action) => {
@@ -91,18 +83,25 @@ const currentPhotoSlice = createSlice ({
 
     builder.addCase(fetchPhotoByDate.pending, (state, action) => {
       console.log('loaded')
-      state.status = "loading";
+      state.status = 'loading';
   })
     builder.addCase(fetchPhotoByDate.fulfilled, (state, action) => {
-      console.log('success')
       state.status = "succeeded";
-      state.photo.splice(0, 1, action.payload)
+      state.photo.slice(0, 1)
+      // state.photo.slice(0, 1)
+      state.photo = state.photo.concat(action.payload)
+      // state.photo.push(action.payload)
+      // console.log('photo changed')
+
+         // ...state,
+        // staus: "succeeded",
+        // photo: state.photo.splice(0, 1, action.payload),
    
     })
   
     builder.addCase(fetchPhotoByDate.rejected, (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
+        state.status = "failed";
+        state.error = action.error.message;
     })
   }
 });
