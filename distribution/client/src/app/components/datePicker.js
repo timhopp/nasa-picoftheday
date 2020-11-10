@@ -51,15 +51,3 @@ var DateSelector = /** @class */ (function (_super) {
 }(react_1["default"].Component));
 exports["default"] = DateSelector;
 ;
-// const mapDispatchToProps = (dispatch: AppDispatch) => {
-//   return {
-//   }
-// }
-// const mapStateToProps = (state: RootState) => {
-//   return {
-//   }
-// }
-// const mapDispatchToProps = ( dispatch: AppDispatch) => {
-//   return {
-// }}
-// export default connect()(DateSelector);

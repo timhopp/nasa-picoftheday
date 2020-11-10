@@ -36,28 +36,48 @@ var CurrentPhoto = /** @class */ (function (_super) {
         _this.fetchNext = _this.fetchNext.bind(_this);
         return _this;
     }
-    //Need to add a way to check is date is future
     CurrentPhoto.prototype.fetchNext = function () {
         var checkedDate = "";
+        var todayFormatted = "";
         if (this.props.date === "") {
             var createCurrent = new Date();
+            var today = new Date();
+            todayFormatted = moment_1["default"](today).format("yyyy-MM-DD");
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
             store_1["default"].dispatch(currentPhotoSlice_1.setDate(checkedDate));
+            store_1["default"].dispatch(currentPhotoSlice_1.setToday(todayFormatted));
         }
         else {
             checkedDate = this.props.date;
         }
         var newDate = moment_1["default"](checkedDate).add(1, "days").format("yyyy-MM-DD");
-        store_1["default"].dispatch(currentPhotoSlice_1.setDate(newDate));
-        console.log("hit", newDate);
-        store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
+        //The store today does not come back in time if initially being set, but the todayFomatted is only set if(this.props.date === "") runs. So it needs to determine which is which to ensure today isn't ""
+        var todayCurrent = '';
+        if (this.props.today === "") {
+            todayCurrent = todayFormatted;
+        }
+        else {
+            todayCurrent = this.props.today;
+        }
+        if (moment_1["default"](newDate).isAfter(todayCurrent)) {
+            alert('Cant Pick a Date in The Future');
+        }
+        else {
+            store_1["default"].dispatch(currentPhotoSlice_1.setDate(newDate));
+            console.log("hit", newDate);
+            store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
+        }
     };
     CurrentPhoto.prototype.fetchPrevious = function () {
         var checkedDate = "";
+        var todayFormatted = "";
         if (this.props.date === "") {
             var createCurrent = new Date();
+            var today = new Date();
+            todayFormatted = moment_1["default"](today).format("yyyy-MM-DD");
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
             store_1["default"].dispatch(currentPhotoSlice_1.setDate(checkedDate));
+            store_1["default"].dispatch(currentPhotoSlice_1.setToday(todayFormatted));
         }
         else {
             checkedDate = this.props.date;
@@ -83,7 +103,8 @@ var CurrentPhoto = /** @class */ (function (_super) {
 var mapStateToProps = function (state) {
     console.log('map hit');
     return {
-        date: state.currentPhoto.date
+        date: state.currentPhoto.date,
+        today: state.currentPhoto.today
     };
 };
 exports["default"] = react_redux_1.connect(mapStateToProps)(CurrentPhoto);

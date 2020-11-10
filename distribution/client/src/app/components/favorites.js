@@ -23,6 +23,7 @@ var datePicker_1 = __importDefault(require("./datePicker"));
 var favoriteCom_1 = __importDefault(require("./favoriteCom"));
 var react_bootstrap_1 = require("react-bootstrap");
 require("../app.css");
+var store_1 = __importDefault(require("../store"));
 var Favorites = /** @class */ (function (_super) {
     __extends(Favorites, _super);
     function Favorites(props) {
@@ -36,20 +37,29 @@ var Favorites = /** @class */ (function (_super) {
     }
     Favorites.prototype.handleShow = function () { this.setState({ show: true }); };
     Favorites.prototype.handleClose = function () { this.setState({ show: false }); };
+    Favorites.prototype.addFavorite = function (newFavorite) {
+        debugger;
+        if (this.props.favorites.filter(function (fav) { return fav.title === newFavorite.title; }).length > 0) {
+            alert("Cannot have the same favorite twice!");
+        }
+        else {
+            store_1["default"].dispatch(favoriteSlice_1.addFavorite(newFavorite));
+        }
+    };
     Favorites.prototype.render = function () {
         var _this = this;
         return (react_1["default"].createElement("div", null,
             react_1["default"].createElement("div", { className: "container-fluid" },
                 react_1["default"].createElement("div", { className: "row justify-content-center" },
                     react_1["default"].createElement("div", { className: "col" },
-                        react_1["default"].createElement("button", { className: "btn btn-success", onClick: function () { return _this.props.addFavorite(_this.props.currentPhoto); } }, "Add To Favorites")),
+                        react_1["default"].createElement("button", { className: "btn btn-success", onClick: function () { return _this.addFavorite(_this.props.currentPhoto); } }, "Add To Favorites")),
                     react_1["default"].createElement("div", { className: "col" },
                         react_1["default"].createElement("h5", { className: "" }, "Select A Date"),
                         react_1["default"].createElement(datePicker_1["default"], null))),
                 react_1["default"].createElement("div", { className: "container-fluid" },
                     react_1["default"].createElement("div", { className: "row justify-content-center" },
                         react_1["default"].createElement("h5", null, "Favorites")),
-                    react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-2 bg-info m-3 rounded", key: fav._id, onClick: _this.handleShow },
+                    react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-2 bg-info m-3 rounded pointer hover", key: fav._id, onClick: _this.handleShow },
                         react_1["default"].createElement(favoriteCom_1["default"], { key: fav.title, fav: fav }))); })))),
             this.props.currentFav ?
                 react_1["default"].createElement(react_bootstrap_1.Modal, { show: this.state.show, size: "lg", onHide: this.handleClose },
@@ -74,7 +84,7 @@ var mapStateToProps = function (state) {
 };
 var mapDispatchToProps = function (dispatch) {
     return {
-        addFavorite: function (newFavorite) { return dispatch(favoriteSlice_1.addFavorite(newFavorite)); },
+        // addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite)),
         removeFavorite: function (fav) { return dispatch(favoriteSlice_1.removeFavorite(fav._id)); }
     };
 };

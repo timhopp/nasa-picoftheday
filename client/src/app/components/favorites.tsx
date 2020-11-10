@@ -8,6 +8,7 @@ import DateSelector from "./datePicker";
 import Favorite from "./favoriteCom";
 import { Modal, Button } from "react-bootstrap"
 import '../app.css';
+import  store  from "../store"
 
 
 //Both actions and objects need to be passed into the component as a prop with a type
@@ -15,7 +16,6 @@ interface favoriteProps {
   currentPhoto: Photo
   currentFav: Photo
   favorites: Photo[]
-  addFavorite: (currentPhoto: Photo) => void
   removeFavorite: (currentFav: Photo) => void
 }
 
@@ -23,6 +23,8 @@ interface IState {
   show: boolean
 
 }
+
+
 
 
 
@@ -35,11 +37,19 @@ class Favorites extends React.Component<favoriteProps, IState> {
     }
     this.handleShow = this.handleShow.bind(this)
     this.handleClose = this.handleClose.bind(this)
-
   }
 
   handleShow(){ this.setState({ show: true }) } 
   handleClose(){ this.setState({  show: false }) }
+
+  addFavorite(newFavorite : Photo){
+    debugger
+    if(this.props.favorites.filter(fav => fav.title === newFavorite.title).length > 0 ){
+      alert("Cannot have the same favorite twice!")
+    } else {
+      store.dispatch(addFavorite(newFavorite))
+  }
+}
 
 
   render(){
@@ -51,7 +61,7 @@ class Favorites extends React.Component<favoriteProps, IState> {
        <div className= "row justify-content-center">
       <div className="col">
 
-      <button className="btn btn-success"  onClick={() => this.props.addFavorite(this.props.currentPhoto)}>Add To Favorites</button>
+      <button className="btn btn-success"  onClick={() => this.addFavorite(this.props.currentPhoto)}>Add To Favorites</button>
       </div>
       <div className="col">
 
@@ -67,7 +77,7 @@ class Favorites extends React.Component<favoriteProps, IState> {
         </div>
         <div className="row justify-content-center">
           {this.props.favorites.map((fav) => (
-            <div className="col-2 bg-info m-3 rounded" key={fav._id} onClick={this.handleShow}>
+            <div className="col-2 bg-info m-3 rounded pointer hover" key={fav._id} onClick={this.handleShow}>
               <Favorite key={fav.title} fav={fav}></Favorite>
 
             </div>
@@ -81,9 +91,6 @@ class Favorites extends React.Component<favoriteProps, IState> {
 
 {this.props.currentFav? 
   <Modal show={this.state.show}  size="lg" onHide={this.handleClose}>
-        {/* <Modal.Header className="bg-info" closeButton>
-          <Modal.Title className="text-center"></Modal.Title>
-        </Modal.Header> */}
         <Modal.Body className="bg-dark"  >
           <div className="container-fluid">
             <div className="row justify-content-center text-white">
@@ -103,9 +110,6 @@ class Favorites extends React.Component<favoriteProps, IState> {
             </div>
          
         </Modal.Body>
-        {/* <Modal.Footer className="bg-info">
-        
-        </Modal.Footer> */}
       </Modal>
 
 
@@ -129,7 +133,7 @@ const mapStateToProps = (state: RootState ) => {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite)),
+    // addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite)),
     removeFavorite: (fav: Photo) => dispatch(removeFavorite(fav._id)),
   }
 }

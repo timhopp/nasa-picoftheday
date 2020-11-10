@@ -43,11 +43,18 @@ body {
   max-height: 250px;
 }
 
-/* .modal {
-  background-color: #282c34;
-} */
-
 /* Important necessary to override bootstrap-react css */
 .modal-content {
   background-color: #282c34 !important;
+}
+
+.hover {
+  transition: all 0.3s ease;
+}
+.hover:hover {
+  box-shadow: 3px 10px #126e7c !important;
+  transform: translateY(-3px);
+}
+.pointer {
+  cursor: pointer;
 }

@@ -25,16 +25,12 @@ const addFavorite = async ( req: Request, res: Response): Promise<void> => {
       copyright: body.copyright
     })
 
+    //saves favorite to mongodb
     const newFavorite: InstanceType<IFavorite> = await favorite.save()
-    const allFavorites: IFavorite[] = await Favorite.find()
 
     res 
     .status(201)
-    .json({
-      // message:'Favorite Added',  favorite: 
-      favorite
-    // , favorites: allFavorites
-  })
+    .json( favorite)
   } catch (error) {
     throw error
   }
@@ -54,5 +50,16 @@ const deleteFavorite = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
+const deleteAllFavorites = async (req: Request, res: Response): Promise<void> => {
+  try {
+   const deletedFavorites: any | null = await Favorite.deleteMany({"date" : "2020-11-10"})
+   res.status(200).json({
+     message: 'DELETED'
+   })
+  } catch(error){
+    throw error
+  }
+}
 
-export { getFavorites, addFavorite, deleteFavorite }
+
+export { getFavorites, addFavorite, deleteFavorite, deleteAllFavorites }

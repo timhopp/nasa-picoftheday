@@ -64,8 +64,10 @@ var App = function () {
     else if (photoStatus === 'failed') {
         content =
             react_1["default"].createElement("div", null,
-                " ",
-                error);
+                react_1["default"].createElement("h3", null,
+                    " ",
+                    error),
+                react_1["default"].createElement("h5", null, "Select A Date isn't in The Future "));
     }
     return (react_1["default"].createElement("div", { className: "App" },
         react_1["default"].createElement("div", null,

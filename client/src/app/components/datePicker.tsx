@@ -4,11 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
 import moment from "moment"
+import { RootState } from "../reducers/index"
+import { connect } from "react-redux";
 
 
 interface DateProps {
-  startDate?: Date; 
- 
+  startDate?: Date
 }
 
 //{} type is required to create new Date() in state
@@ -47,18 +48,5 @@ return (
 };
 
 
-// const mapDispatchToProps = (dispatch: AppDispatch) => {
-//   return {
-//   }
-// }
 
-// const mapStateToProps = (state: RootState) => {
-//   return {
-//   }
-// }
 
-// const mapDispatchToProps = ( dispatch: AppDispatch) => {
-//   return {
-// }}
-
-// export default connect()(DateSelector);

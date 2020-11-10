@@ -59,7 +59,10 @@ if(photoStatus === 'loading'){
 
 } else if (photoStatus === 'failed') {
    content = 
-   <div> {error}</div> 
+   <div>
+   <h3> {error}</h3> 
+   <h5>Select A Date isn't in The Future </h5>
+   </div>
  }
 
 

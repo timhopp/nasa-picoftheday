@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.deleteFavorite = exports.addFavorite = exports.getFavorites = void 0;
+exports.deleteAllFavorites = exports.deleteFavorite = exports.addFavorite = exports.getFavorites = void 0;
 var favorite_1 = __importDefault(require("../models/favorite"));
 var getFavorites = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var favorites, error_1;
@@ -61,11 +61,11 @@ var getFavorites = function (req, res) { return __awaiter(void 0, void 0, void 0
 }); };
 exports.getFavorites = getFavorites;
 var addFavorite = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var body, favorite, newFavorite, allFavorites, error_2;
+    var body, favorite, newFavorite, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
+                _a.trys.push([0, 2, , 3]);
                 debugger;
                 body = req.body;
                 favorite = new favorite_1["default"]({
@@ -78,21 +78,14 @@ var addFavorite = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 return [4 /*yield*/, favorite.save()];
             case 1:
                 newFavorite = _a.sent();
-                return [4 /*yield*/, favorite_1["default"].find()];
-            case 2:
-                allFavorites = _a.sent();
                 res
                     .status(201)
-                    .json({
-                    // message:'Favorite Added',  favorite: 
-                    favorite: favorite
-                    // , favorites: allFavorites
-                });
-                return [3 /*break*/, 4];
-            case 3:
+                    .json(favorite);
+                return [3 /*break*/, 3];
+            case 2:
                 error_2 = _a.sent();
                 throw error_2;
-            case 4: return [2 /*return*/];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
@@ -123,3 +116,24 @@ var deleteFavorite = function (req, res) { return __awaiter(void 0, void 0, void
     });
 }); };
 exports.deleteFavorite = deleteFavorite;
+var deleteAllFavorites = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var deletedFavorites, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, favorite_1["default"].deleteMany({ "date": "2020-11-10" })];
+            case 1:
+                deletedFavorites = _a.sent();
+                res.status(200).json({
+                    message: 'DELETED'
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
+                throw error_4;
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.deleteAllFavorites = deleteAllFavorites;
