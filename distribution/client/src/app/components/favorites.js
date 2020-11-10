@@ -68,7 +68,7 @@ var Favorites = /** @class */ (function (_super) {
 }(react_1["default"].Component));
 var mapStateToProps = function (state) {
     return {
-        currentPhoto: state.currentPhoto.photo[0],
+        currentPhoto: state.currentPhoto.photo,
         favorites: state.favorites.favorites,
         currentFav: state.favorites.currentFavorite[0]
     };

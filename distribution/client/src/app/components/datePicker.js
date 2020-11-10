@@ -17,10 +17,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var react_1 = __importDefault(require("react"));
-var store_1 = __importDefault(require("../store"));
 var react_datepicker_1 = __importDefault(require("react-datepicker"));
 require("react-datepicker/dist/react-datepicker.css");
-var currentPhotoSlice_1 = require("../reducers/currentPhotoSlice");
+// import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
 var moment_1 = __importDefault(require("moment"));
 //{} type is required to create new Date() in state
 var DateSelector = /** @class */ (function (_super) {
@@ -36,8 +35,8 @@ var DateSelector = /** @class */ (function (_super) {
     DateSelector.prototype.handleChange = function (date) {
         var formattedDate = moment_1["default"](date).format("yyyy-MM-DD");
         console.log('date is here!', formattedDate);
-        store_1["default"].dispatch(currentPhotoSlice_1.setDate(formattedDate));
-        store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(formattedDate));
+        // store.dispatch(setDate(formattedDate))
+        // store.dispatch(fetchPhotoByDate(formattedDate))
         this.setState({
             startDate: date
         });

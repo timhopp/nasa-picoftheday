@@ -51,7 +51,7 @@ var CurrentPhoto = /** @class */ (function (_super) {
         var newDate = moment_1["default"](checkedDate).add(1, "days").format("yyyy-MM-DD");
         this.setState({ currentDate: newDate });
         console.log("hit", newDate);
-        store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
+        // store.dispatch(fetchPhotoByDate(newDate));
     };
     CurrentPhoto.prototype.fetchPrevious = function () {
         var checkedDate = "";
@@ -74,18 +74,16 @@ var CurrentPhoto = /** @class */ (function (_super) {
             react_1["default"].createElement("div", { className: "row align-items-center" },
                 react_1["default"].createElement("button", { className: "col btn btn-info ml-5", onClick: this.fetchPrevious }, "Previous"),
                 react_1["default"].createElement("div", { className: "col-8" },
+                    react_1["default"].createElement("h2", null, this.props.currentPhoto.title),
                     react_1["default"].createElement(photo_1.PhotoCom, null)),
-                react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next")),
-            react_1["default"].createElement("h1", null,
-                "Current Date",
-                this.props.date)));
+                react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next"))));
     };
     return CurrentPhoto;
 }(react_1["default"].Component));
 var mapStateToProps = function (state) {
     console.log('map hit');
     return {
-        currentPhoto: state.currentPhoto.photo[0],
+        currentPhoto: state.currentPhoto.photo,
         date: state.currentPhoto.date
     };
 };

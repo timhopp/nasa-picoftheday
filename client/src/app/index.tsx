@@ -8,9 +8,10 @@ function render() {
 // const App = require('./App').default
 
   ReactDOM.render(
-  <Provider store={store}>
+    <Provider store={store}>
   <App />
   </Provider>,
+
    document.getElementById('root')
   )
 }

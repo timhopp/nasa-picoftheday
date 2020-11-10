@@ -2,7 +2,7 @@ import React from "react";
 import  store  from "../store"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
+// import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
 import moment from "moment"
 
 
@@ -25,8 +25,8 @@ constructor(props : DateProps) {
 handleChange(date: Date) {
   let formattedDate = moment(date).format("yyyy-MM-DD")
   console.log('date is here!', formattedDate);
-  store.dispatch(setDate(formattedDate))
-  store.dispatch(fetchPhotoByDate(formattedDate))
+  // store.dispatch(setDate(formattedDate))
+  // store.dispatch(fetchPhotoByDate(formattedDate))
   this.setState({
     startDate: date });
   // this.props.changePhoto(date);

@@ -101,7 +101,7 @@ class Favorites extends React.Component<favoriteProps> {
 }
 const mapStateToProps = (state: RootState ) => {
   return { 
-    currentPhoto: state.currentPhoto.photo[0],
+    currentPhoto: state.currentPhoto.photo,
     favorites: state.favorites.favorites,
     currentFav: state.favorites.currentFavorite[0],
   }

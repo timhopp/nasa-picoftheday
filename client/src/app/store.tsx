@@ -9,16 +9,16 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept("../app/reducers/index", () => {
-    const newRootReducer = require("../app/reducers/index").default
-    store.replaceReducer(newRootReducer)
-  })
-}
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//   module.hot.accept("../app/reducers/index", () => {
+//     const newRootReducer = require("../app/reducers/index").default
+//     store.replaceReducer(newRootReducer)
+//   })
+// }
 
 
 export type AppDispatch = typeof store.dispatch
-export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>
 //Note -- Do I need this? Why ?
 // export const useAppDispatch = () => useDispatch<AppDispatch>();
 

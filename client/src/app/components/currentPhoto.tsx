@@ -47,7 +47,7 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
     let newDate = moment(checkedDate).add(1, "days").format("yyyy-MM-DD");
     this.setState({ currentDate: newDate });
     console.log("hit", newDate);
-    store.dispatch(fetchPhotoByDate(newDate));
+    // store.dispatch(fetchPhotoByDate(newDate));
   }
 
   fetchPrevious() {
@@ -77,13 +77,13 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
             Previous
           </button>
           <div className="col-8">
+            <h2>{this.props.currentPhoto.title}</h2>
            <PhotoCom></PhotoCom>
           </div>
           <button className="col btn btn-info mr-5" onClick={this.fetchNext}>
             Next
           </button>
         </div>
-        <h1>Current Date{this.props.date}</h1> 
       </div>
     );
   }
@@ -92,7 +92,7 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
 const mapStateToProps = (state: RootState) => {
   console.log('map hit')
   return {
-    currentPhoto: state.currentPhoto.photo[0],
+    currentPhoto: state.currentPhoto.photo,
     date: state.currentPhoto.date
   }
 }

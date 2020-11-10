@@ -19,12 +19,12 @@ const composedEnhancers = compose(middlewareEnhancer);
 
 
 const AppWrapper = () => {
-  const store = createStore(rootReducer, undefined, composedEnhancers);
+  // const store = createStore(rootReducer, undefined, composedEnhancers);
 
   return (
-    <Provider store={store}>
+   
       <App/>
-    </Provider>
+
   )
 }
 
@@ -36,44 +36,61 @@ const dispatch = useDispatch();
 
 //Need to export RootState and set state type to RootState to access reducers
 const photoStatus : string = useSelector((state: RootState) => state.currentPhoto.status)
-const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
-const photo : Photo[] = useSelector((state: RootState) => state.currentPhoto.photo)
+// const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
+const photo : Photo | undefined = useSelector((state: RootState) => state.currentPhoto.photo)
 
 
 useEffect(() => {
   if(photoStatus == 'idle')
-  dispatch(fetchCurrentPhoto())
-  dispatch(fetchFavorites())
+  dispatch(fetchCurrentPhoto)
+  // dispatch(fetchFavorites())
   //Adding the empty array as a second argument ensures it only is called once.
 }, [])
 
-let content 
-if(photoStatus === 'loading'){
-   content =
-  <div>
-  <h1>NASA Picture of The Day</h1>
-  <p> Loading</p>
-   </div>
+// let content 
+// if(photoStatus === 'loading'){
+//    content =
+//   <div>
+//   <h1>NASA Picture of The Day</h1>
+//   <p> Loading</p>
+//    </div>
 
-} else if (photoStatus === 'succeeded') {
-   content = 
+// } else if (photoStatus === 'succeeded') {
+//    content = 
+//    <div>
+ 
+//    </div>
+
+// } else if (photoStatus === 'failed') {
+//    content = 
+//    <div>
+//        <h1>NASA Picture of The Day</h1>
+//      {error}</div> 
+//  }
+let content
+if(photoStatus === "succeeded"){
+  content =
   <div>
-    <h1>NASA Picture of The Day</h1>
-   <CurrentPhoto></CurrentPhoto>
-    </div>
-} else if (photoStatus === 'failed') {
-   content = 
-   <div>
-       <h1>NASA Picture of The Day</h1>
-     {error}</div> 
- }
+    <CurrentPhoto></CurrentPhoto>
+  </div>
+  
+}else{
+  content = 
+  <div>  
+  loading
+  </div>
+}
 
   return (
     <div className="App">
       <header className="App-header">
       </header>
     <div>
-    {content}
+    <div>
+    <h1>NASA Picture of The Day</h1>
+   {content}
+  
+    </div>
        <Favorites></Favorites>
     </div>
 
