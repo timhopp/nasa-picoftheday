@@ -30,15 +30,13 @@ var Favorite = /** @class */ (function (_super) {
         return (react_1["default"].createElement("div", { className: "", onClick: function () { return _this.props.currentFavorite(_this.props.fav); } },
             react_1["default"].createElement("div", { className: "" }, this.props.fav.title),
             react_1["default"].createElement("div", { className: "row justify-content-center" },
-                react_1["default"].createElement("img", { className: "favimg pt-2 pb-2", src: this.props.fav.url, alt: "Image Not Available" })),
-            react_1["default"].createElement("button", { className: "btn btn-danger m-2", onClick: function () { return _this.props.removeFavorite(_this.props.fav); } }, "Remove")));
+                react_1["default"].createElement("img", { className: "favimg p-1", src: this.props.fav.url, alt: "Image Not Available" }))));
     };
     return Favorite;
 }(react_1["default"].Component));
 var mapDispatchToProps = function (dispatch) {
     return {
         // deleteFavorite: (fav: Photo) => dispatch(deleteFavorite(fav)),
-        removeFavorite: function (fav) { return dispatch(favoriteSlice_1.removeFavorite(fav._id)); },
         currentFavorite: function (fav) { return dispatch(favoriteSlice_1.setCurrentFavorite(fav)); }
     };
 };

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import './app.css';
-import rootReducer from "../app/reducers/index";
-import {Provider} from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentPhoto} from "../app/reducers/currentPhotoSlice";
@@ -11,7 +9,7 @@ import CurrentPhoto from "../app/components/currentPhoto"
 import Favorites from "../app/components/favorites";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RootState } from "./reducers/index"
-import { Photo } from "./features/photos/types"
+
 
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware);
@@ -36,61 +34,41 @@ const dispatch = useDispatch();
 
 //Need to export RootState and set state type to RootState to access reducers
 const photoStatus : string = useSelector((state: RootState) => state.currentPhoto.status)
-// const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
-const photo : Photo | undefined = useSelector((state: RootState) => state.currentPhoto.photo)
+const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
 
 
 useEffect(() => {
   if(photoStatus == 'idle')
-  dispatch(fetchCurrentPhoto)
-  // dispatch(fetchFavorites())
-  //Adding the empty array as a second argument ensures it only is called once.
+  dispatch(fetchCurrentPhoto())
+  dispatch(fetchFavorites())
+  // Adding the empty array as a second argument ensures it only is called once.
 }, [])
 
-// let content 
-// if(photoStatus === 'loading'){
-//    content =
-//   <div>
-//   <h1>NASA Picture of The Day</h1>
-//   <p> Loading</p>
-//    </div>
-
-// } else if (photoStatus === 'succeeded') {
-//    content = 
-//    <div>
- 
-//    </div>
-
-// } else if (photoStatus === 'failed') {
-//    content = 
-//    <div>
-//        <h1>NASA Picture of The Day</h1>
-//      {error}</div> 
-//  }
-let content
-if(photoStatus === "succeeded"){
-  content =
+let content 
+if(photoStatus === 'loading'){
+   content =
   <div>
-    <CurrentPhoto></CurrentPhoto>
-  </div>
-  
-}else{
-  content = 
-  <div>  
-  loading
-  </div>
-}
+  <h1>NASA Picture of The Day</h1>
+  <p> Loading</p>
+   </div>
+
+} else if (photoStatus === 'succeeded') {
+   content = 
+   <div>
+     <CurrentPhoto></CurrentPhoto>
+   </div>
+
+} else if (photoStatus === 'failed') {
+   content = 
+   <div> {error}</div> 
+ }
+
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
     <div>
-    <div>
-    <h1>NASA Picture of The Day</h1>
+    <h2 className="pt-2">NASA Picture of The Day</h2>
    {content}
-  
-    </div>
        <Favorites></Favorites>
     </div>
 

@@ -39,11 +39,13 @@ var CurrentPhoto = /** @class */ (function (_super) {
     //Need to add a way to check is date is future
     CurrentPhoto.prototype.fetchNext = function () {
         var checkedDate = "";
+        // let today = ""
         if (this.state.currentDate === "") {
             var createCurrent = new Date();
+            // let today = new Date();
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
             this.setState({ currentDate: checkedDate });
-            this.setState({ today: checkedDate });
+            // this.setState({ today: checkedDate });
         }
         else {
             checkedDate = this.state.currentDate;
@@ -51,15 +53,16 @@ var CurrentPhoto = /** @class */ (function (_super) {
         var newDate = moment_1["default"](checkedDate).add(1, "days").format("yyyy-MM-DD");
         this.setState({ currentDate: newDate });
         console.log("hit", newDate);
-        // store.dispatch(fetchPhotoByDate(newDate));
+        store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
     };
     CurrentPhoto.prototype.fetchPrevious = function () {
         var checkedDate = "";
+        debugger;
         if (this.state.currentDate === "") {
             var createCurrent = new Date();
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
             this.setState({ currentDate: checkedDate });
-            this.setState({ today: checkedDate });
+            // this.setState({ today: checkedDate });
         }
         else {
             checkedDate = this.state.currentDate;
@@ -74,7 +77,6 @@ var CurrentPhoto = /** @class */ (function (_super) {
             react_1["default"].createElement("div", { className: "row align-items-center" },
                 react_1["default"].createElement("button", { className: "col btn btn-info ml-5", onClick: this.fetchPrevious }, "Previous"),
                 react_1["default"].createElement("div", { className: "col-8" },
-                    react_1["default"].createElement("h2", null, this.props.currentPhoto.title),
                     react_1["default"].createElement(photo_1.PhotoCom, null)),
                 react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next"))));
     };

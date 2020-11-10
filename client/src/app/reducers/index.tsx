@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import  {currentPhotoReducer } from "./currentPhotoSlice"
+import  currentPhotoSlice  from "./currentPhotoSlice"
 import favoriteSlice from "./favoriteSlice";
 
 //rootReducer combines all reducers into one to pass to the store.
@@ -8,7 +8,7 @@ import favoriteSlice from "./favoriteSlice";
 
 
 const rootReducer = combineReducers({
-  currentPhoto: currentPhotoReducer,
+  currentPhoto: currentPhotoSlice,
   favorites: favoriteSlice
 });
 

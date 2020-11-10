@@ -30,7 +30,10 @@ const addFavorite = async ( req: Request, res: Response): Promise<void> => {
 
     res 
     .status(201)
-    .json({message:'Favorite Added', favorite: newFavorite, favorites: allFavorites})
+    .json({
+      message:'Favorite Added',  favorite: newFavorite
+    // , favorites: allFavorites
+  })
   } catch (error) {
     throw error
   }

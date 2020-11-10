@@ -27,6 +27,7 @@ require("./app.css");
 var redux_1 = require("redux");
 var react_redux_1 = require("react-redux");
 var currentPhotoSlice_1 = require("../app/reducers/currentPhotoSlice");
+var favoriteSlice_1 = require("../app/reducers/favoriteSlice");
 var redux_thunk_1 = __importDefault(require("redux-thunk"));
 var currentPhoto_1 = __importDefault(require("../app/components/currentPhoto"));
 var favorites_1 = __importDefault(require("../app/components/favorites"));
@@ -42,47 +43,35 @@ var App = function () {
     var dispatch = react_redux_1.useDispatch();
     //Need to export RootState and set state type to RootState to access reducers
     var photoStatus = react_redux_1.useSelector(function (state) { return state.currentPhoto.status; });
-    // const error : string | null | undefined = useSelector((state: RootState) => state.currentPhoto.error)
-    var photo = react_redux_1.useSelector(function (state) { return state.currentPhoto.photo; });
+    var error = react_redux_1.useSelector(function (state) { return state.currentPhoto.error; });
     react_1.useEffect(function () {
         if (photoStatus == 'idle')
-            dispatch(currentPhotoSlice_1.fetchCurrentPhoto);
-        // dispatch(fetchFavorites())
-        //Adding the empty array as a second argument ensures it only is called once.
+            dispatch(currentPhotoSlice_1.fetchCurrentPhoto());
+        dispatch(favoriteSlice_1.fetchFavorites());
+        // Adding the empty array as a second argument ensures it only is called once.
     }, []);
-    // let content 
-    // if(photoStatus === 'loading'){
-    //    content =
-    //   <div>
-    //   <h1>NASA Picture of The Day</h1>
-    //   <p> Loading</p>
-    //    </div>
-    // } else if (photoStatus === 'succeeded') {
-    //    content = 
-    //    <div>
-    //    </div>
-    // } else if (photoStatus === 'failed') {
-    //    content = 
-    //    <div>
-    //        <h1>NASA Picture of The Day</h1>
-    //      {error}</div> 
-    //  }
     var content;
-    if (photoStatus === "succeeded") {
+    if (photoStatus === 'loading') {
+        content =
+            react_1["default"].createElement("div", null,
+                react_1["default"].createElement("h1", null, "NASA Picture of The Day"),
+                react_1["default"].createElement("p", null, " Loading"));
+    }
+    else if (photoStatus === 'succeeded') {
         content =
             react_1["default"].createElement("div", null,
                 react_1["default"].createElement(currentPhoto_1["default"], null));
     }
-    else {
+    else if (photoStatus === 'failed') {
         content =
-            react_1["default"].createElement("div", null, "loading");
+            react_1["default"].createElement("div", null,
+                " ",
+                error);
     }
     return (react_1["default"].createElement("div", { className: "App" },
-        react_1["default"].createElement("header", { className: "App-header" }),
         react_1["default"].createElement("div", null,
-            react_1["default"].createElement("div", null,
-                react_1["default"].createElement("h1", null, "NASA Picture of The Day"),
-                content),
+            react_1["default"].createElement("h2", { className: "pt-2" }, "NASA Picture of The Day"),
+            content,
             react_1["default"].createElement(favorites_1["default"], null))));
 };
 exports["default"] = AppWrapper;

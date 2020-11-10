@@ -1,8 +1,8 @@
 export interface Photo {
-  _id?: string, 
-  date?: string, 
-  title?: string,
-  copyright?: string,
-  explanation?: string,
-  url?: string
+  _id: string, 
+  date: string, 
+  title: string,
+  copyright: string,
+  explanation: string,
+  url: string
 }

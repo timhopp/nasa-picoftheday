@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,9 +39,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.fetchPhotoByDate = exports.fetchCurrentPhoto = exports.currentPhotoReducer = void 0;
+exports.setDate = exports.fetchPhotoByDate = exports.fetchCurrentPhoto = void 0;
 var axios_1 = __importDefault(require("axios"));
-var currentPhoto_1 = require("./types/currentPhoto");
+var toolkit_1 = require("@reduxjs/toolkit");
 var initialState = {
     //Array of photo types
     photo: {},
@@ -61,62 +50,40 @@ var initialState = {
     // updated: false, 
     error: null
 };
-// export const fetchCurrentPhoto = createAsyncThunk(
-//   "reducers/fetchCurrentPhoto",
-//   async () => {
-//      const response = await axios.get<Photo>(
-//       "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5"
-//     );
-//    return response.data;
-//   }
-// )
-// // formattedDate needs to be passed in through the async
-// export const fetchPhotoByDate = createAsyncThunk(
-//   "reducers/fetchPhotoByDate",
-//   async (formattedDate : string) => {
-//        const response =
-//         await axios.get<Photo>(
-//           "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
-//         )
-//       return response.data;
+// export function currentPhotoReducer(
+//   state = initialState, 
+//   action: currentPhotoTypes 
+// ) : PhotoState {
+//   switch(action.type){
+//     case SET_CURRENT:
+//       return {
+//         ...state,
+//         photo: action.payload,
+//         status: 'succeeded',
+//       }
+//   case SET_NEWCURRENT: {
+//     const photoObj = action.payload
+//       return {
+//         ...state,
+//         photo: photoObj 
+//       }
 //     }
-// )
-function currentPhotoReducer(state, action) {
-    if (state === void 0) { state = initialState; }
-    switch (action.type) {
-        case currentPhoto_1.SET_CURRENT:
-            return __assign(__assign({}, state), { photo: action.payload, status: 'succeeded' });
-        case currentPhoto_1.SET_NEWCURRENT: {
-            var photoObj = action.payload;
-            return __assign(__assign({}, state), { photo: photoObj });
-        }
-        default:
-            return state;
-    }
-}
-exports.currentPhotoReducer = currentPhotoReducer;
+//       default:
+//         return state
+//   }
+// }
 // const newPhoto = (state: PhotoState, action) => {
 //   let old = state.photo
 //   old = action.PayloadAction
 //   return {...state, ...state.photo,  old}
 // }
-function fetchCurrentPhoto(dispatch, getState) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, state;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=2020-11-09")];
-                case 1:
-                    response = _a.sent();
-                    dispatch({ type: 'SET_CURRENT', payload: response.data });
-                    state = getState();
-                    console.log('state', state);
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-exports.fetchCurrentPhoto = fetchCurrentPhoto;
+// export async function fetchCurrentPhoto(dispatch, getState){
+//   const response = await axios.get<Photo>(
+//     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=2020-11-09");
+//     dispatch({ type: 'SET_CURRENT', payload: response.data})
+//     const state = getState()
+//     console.log('state', state)
+// }
 // export async function fetchPhotoByDate(dispatch, getState, formattedDate){
 //   const response = await axios.get<Photo>(
 //     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
@@ -125,103 +92,115 @@ exports.fetchCurrentPhoto = fetchCurrentPhoto;
 //   const state = getState()
 //   console.log('got current by date', state)
 // }
-// async function fetchPhotoByDate(dispatch, getState, formattedDate){
-//   const response = await axios.get<Photo>(
-//     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
-//   )
 //   dispatch({ type: "SET_CURRENT", payload: response.data})
 //   const state = getState()
 //   console.log('got current by date', state)
 // }
-exports.fetchPhotoByDate = function (formattedDate) {
-    return function (dispatch) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, e_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate)];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, dispatch({
-                            type: "SET_NEWCURRENT",
-                            payload: response.data
-                        })];
-                case 2:
-                    e_1 = _a.sent();
-                    console.error(e_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    }); };
-};
-// async function fetchPhotoByDate(dispatch, getState, formattedDate){
-//   const response = await axios.get<Photo>(
-//     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
-//   )
-//   dispatch({ type: "SET_CURRENT", payload: response.data})
-//   const state = getState()
-//   console.log('got current by date', state)
-// }
-// const currentPhotoSlice = createSlice ({
-//   name: "currentPhoto",
-//   initialState,
-//   reducers: {
-//     setDate(state, action: PayloadAction<string>) {
-//      state.date = ""
-//      state.date = state.date.concat(action.payload)
-//       console.log(JSON.stringify(state.date))
-//     },
-//     // setCurrent(state, action: PayloadAction<Photo>){
-//     //   console.log('hit setCurrent')
-//     //   state.photo[0] = action.payload
-//     // }
-//   },
-//   //State can be mutated directly since it uses Immer behind the scenes
-//   extraReducers: 
-//   builder => {
-//     builder.addCase(fetchCurrentPhoto.pending, (state, action) => {
-//       console.log('loaded')
-//       state.status = "loading";
-//   })
-//     builder.addCase(fetchCurrentPhoto.fulfilled, (state, action) => {
-//       console.log('success')
-//       state.status = "succeeded";
-//       // state.photo.splice(0, 1, action.payload)
-//       state.photo[0] = action.payload;
-//       // console.log(JSON.stringify(state.photo[0]))
-//     })
-//     builder.addCase(fetchCurrentPhoto.rejected, (state, action) => {
-//       state.status = "failed";
-//       state.error = action.error.message;
-//     })
-//     //builders for fetchByDate
-//     builder.addCase(fetchPhotoByDate.pending, (state, action) => {
-//       console.log('loaded')
-//       state.status = 'loading';
-//   })
-//     builder.addCase(fetchPhotoByDate.fulfilled, (state, action) => {
-//       state.status = "succeeded";
-//       // state.photo.slice(0, 1)
-//       // state.photo.slice(0, 1)
-//       // state.photo[0] = action.payload
-//       state.photo.push(action.payload)
-//       // state.photo.push(action.payload)
-//       // console.log('photo changed')
-//          // ...state,
-//         // staus: "succeeded",
-//         // photo: state.photo.splice(0, 1, action.payload),
-//     })
-//     builder.addCase(fetchPhotoByDate.rejected, (state, action) => {
-//         state.status = "failed";
-//         state.error = action.error.message;
-//     })
+// export const fetchPhotoByDate: ActionCreator<AppThunk> = (formattedDate) => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       const response = await axios.get<Photo>(
+//         "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
+//       )
+//       return dispatch({
+//         type: "SET_NEWCURRENT",
+//         payload: response.data
+//       }
+//       );
+//     } catch(e) {
+//       console.error(e)
+//     }
 //   }
-// });
-//use middleware Thunk to be able to do an async function
-//dispatch must be definied as type AppDispatch(more explanation!)
-//.get function must be defined as type Photo, otherwise it will be type any and cause error in Typescript
-//However.. it still comes in as an object with the API's defined names and additional info
-//  export const { setDate } = currentPhotoSlice.actions
-// export default currentPhotoSlice.reducer;
+// }
+// async function fetchPhotoByDate(dispatch, getState, formattedDate){
+//   const response = await axios.get<Photo>(
+//     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
+//   )
+//   dispatch({ type: "SET_CURRENT", payload: response.data})
+//   const state = getState()
+//   console.log('got current by date', state)
+// }
+// async function fetchPhotoByDate(dispatch, getState, formattedDate){
+//   const response = await axios.get<Photo>(
+//     "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
+//   )
+//-------------------------------------------------
+exports.fetchCurrentPhoto = toolkit_1.createAsyncThunk("reducers/fetchCurrentPhoto", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var response;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5")];
+            case 1:
+                response = _a.sent();
+                return [2 /*return*/, response.data];
+        }
+    });
+}); });
+// formattedDate needs to be passed in through the async
+exports.fetchPhotoByDate = toolkit_1.createAsyncThunk("reducers/fetchPhotoByDate", function (formattedDate) { return __awaiter(void 0, void 0, void 0, function () {
+    var response;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate)];
+            case 1:
+                response = _a.sent();
+                return [2 /*return*/, response.data];
+        }
+    });
+}); });
+var currentPhotoSlice = toolkit_1.createSlice({
+    name: "currentPhoto",
+    initialState: initialState,
+    reducers: {
+        setDate: function (state, action) {
+            state.date = "";
+            state.date = state.date.concat(action.payload);
+            console.log(JSON.stringify(state.date));
+        }
+    },
+    //State can be mutated directly since it uses Immer behind the scenes
+    extraReducers: function (builder) {
+        builder.addCase(exports.fetchCurrentPhoto.pending, function (state, action) {
+            console.log('loaded');
+            state.status = "loading";
+        });
+        builder.addCase(exports.fetchCurrentPhoto.fulfilled, function (state, action) {
+            console.log('success');
+            state.status = "succeeded";
+            // state.photo.splice(0, 1, action.payload)
+            state.photo = action.payload;
+            // console.log(JSON.stringify(state.photo[0]))
+        });
+        builder.addCase(exports.fetchCurrentPhoto.rejected, function (state, action) {
+            state.status = "failed";
+            state.error = action.error.message;
+        });
+        //builders for fetchByDate
+        builder.addCase(exports.fetchPhotoByDate.pending, function (state, action) {
+            console.log('loaded');
+            state.status = 'loading';
+        });
+        builder.addCase(exports.fetchPhotoByDate.fulfilled, function (state, action) {
+            state.status = "succeeded";
+            // state.photo.slice(0, 1)
+            // state.photo.slice(0, 1)
+            // state.photo[0] = action.payload
+            state.photo = action.payload;
+            // state.photo.push(action.payload)
+            // console.log('photo changed')
+            // ...state,
+            // staus: "succeeded",
+            // photo: state.photo.splice(0, 1, action.payload),
+        });
+        builder.addCase(exports.fetchPhotoByDate.rejected, function (state, action) {
+            state.status = "failed";
+            state.error = action.error.message;
+        });
+    }
+});
+// use middleware Thunk to be able to do an async function
+// dispatch must be definied as type AppDispatch(more explanation!)
+// .get function must be defined as type Photo, otherwise it will be type any and cause error in Typescript
+//    However.. it still comes in as an object with the API's defined names and additional info
+exports.setDate = currentPhotoSlice.actions.setDate;
+exports["default"] = currentPhotoSlice.reducer;

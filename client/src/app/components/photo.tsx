@@ -9,10 +9,10 @@ const photo : Photo = useSelector((state: RootState) => state.currentPhoto.photo
 
   return (
 <div>
-<h2 className="mt-2">{photo.title}</h2>
+<h4 className="mt-2">{photo.title}</h4>
             <div className="row justify-content-center">
               <img
-                className="img mb-5"
+                className="img mb-2"
                 src={photo.url}
                 alt="Image Not Available"
               ></img>

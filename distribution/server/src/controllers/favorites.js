@@ -83,7 +83,10 @@ var addFavorite = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 allFavorites = _a.sent();
                 res
                     .status(201)
-                    .json({ message: 'Favorite Added', favorite: newFavorite, favorites: allFavorites });
+                    .json({
+                    message: 'Favorite Added', favorite: newFavorite
+                    // , favorites: allFavorites
+                });
                 return [3 /*break*/, 4];
             case 3:
                 error_2 = _a.sent();

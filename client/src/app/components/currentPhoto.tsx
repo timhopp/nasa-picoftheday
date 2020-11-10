@@ -36,27 +36,31 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
   //Need to add a way to check is date is future
   fetchNext() {
     let checkedDate = "";
+    // let today = ""
     if (this.state.currentDate === "") {
       let createCurrent = new Date();
-      checkedDate = moment(createCurrent).format("yyyy-MM-DD");
+      // let today = new Date();
+      checkedDate = moment(createCurrent).format("yyyy-MM-DD"); 
       this.setState({ currentDate: checkedDate });
-      this.setState({ today: checkedDate });
+      // this.setState({ today: checkedDate });
     } else {
       checkedDate = this.state.currentDate;
     }
+   
     let newDate = moment(checkedDate).add(1, "days").format("yyyy-MM-DD");
     this.setState({ currentDate: newDate });
     console.log("hit", newDate);
-    // store.dispatch(fetchPhotoByDate(newDate));
+    store.dispatch(fetchPhotoByDate(newDate));
   }
 
   fetchPrevious() {
     let checkedDate = "";
+    debugger
     if (this.state.currentDate === "") {
       let createCurrent = new Date();
       checkedDate = moment(createCurrent).format("yyyy-MM-DD");
       this.setState({ currentDate: checkedDate });
-      this.setState({ today: checkedDate });
+      // this.setState({ today: checkedDate });
     } else {
       checkedDate = this.state.currentDate;
     }
@@ -77,7 +81,6 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
             Previous
           </button>
           <div className="col-8">
-            <h2>{this.props.currentPhoto.title}</h2>
            <PhotoCom></PhotoCom>
           </div>
           <button className="col btn btn-info mr-5" onClick={this.fetchNext}>
