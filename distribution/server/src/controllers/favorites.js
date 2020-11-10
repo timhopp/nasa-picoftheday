@@ -84,7 +84,8 @@ var addFavorite = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 res
                     .status(201)
                     .json({
-                    message: 'Favorite Added', favorite: newFavorite
+                    // message:'Favorite Added',  favorite: 
+                    favorite: favorite
                     // , favorites: allFavorites
                 });
                 return [3 /*break*/, 4];

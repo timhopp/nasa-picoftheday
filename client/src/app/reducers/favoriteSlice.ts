@@ -95,7 +95,7 @@ const favoriteSlice = createSlice({
       // state.favorites = state.favorites.filter(favorite => favorite._id !== action.payload),
     })
     builder.addCase(addFavorite.fulfilled, (state, action) => {
-      state.favorites.push(action.payload.favorite)
+      state.favorites.push(action.payload)
       console.log('fav added', action.payload)
     })
   }

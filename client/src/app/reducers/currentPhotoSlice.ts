@@ -21,7 +21,7 @@ export interface PhotoState {
 
 const initialState: PhotoState = {
   //Array of photo types
-  photo: {},
+  photo: {} as Photo,
   date: "",
   status: 'idle',
   // updated: false, 

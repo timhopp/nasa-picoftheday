@@ -118,7 +118,7 @@ var favoriteSlice = toolkit_1.createSlice({
             // state.favorites = state.favorites.filter(favorite => favorite._id !== action.payload),
         });
         builder.addCase(exports.addFavorite.fulfilled, function (state, action) {
-            state.favorites.push(action.payload.favorite);
+            state.favorites.push(action.payload);
             console.log('fav added', action.payload);
         });
     }

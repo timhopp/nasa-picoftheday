@@ -30,47 +30,45 @@ var CurrentPhoto = /** @class */ (function (_super) {
         _this.state = {
             currentDate: "",
             today: ""
-        };
-        //The functions this needs to be bound to the this.state, otherwise the state won't be recognizable
-        _this.fetchPrevious = _this.fetchPrevious.bind(_this);
+        },
+            //The functions this needs to be bound to the this.state, otherwise the state won't be recognizable
+            _this.fetchPrevious = _this.fetchPrevious.bind(_this);
         _this.fetchNext = _this.fetchNext.bind(_this);
         return _this;
     }
     //Need to add a way to check is date is future
     CurrentPhoto.prototype.fetchNext = function () {
         var checkedDate = "";
-        // let today = ""
-        if (this.state.currentDate === "") {
+        if (this.props.date === "") {
             var createCurrent = new Date();
-            // let today = new Date();
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
-            this.setState({ currentDate: checkedDate });
-            // this.setState({ today: checkedDate });
+            store_1["default"].dispatch(currentPhotoSlice_1.setDate(checkedDate));
         }
         else {
-            checkedDate = this.state.currentDate;
+            checkedDate = this.props.date;
         }
         var newDate = moment_1["default"](checkedDate).add(1, "days").format("yyyy-MM-DD");
-        this.setState({ currentDate: newDate });
+        store_1["default"].dispatch(currentPhotoSlice_1.setDate(newDate));
         console.log("hit", newDate);
         store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
     };
     CurrentPhoto.prototype.fetchPrevious = function () {
         var checkedDate = "";
-        debugger;
-        if (this.state.currentDate === "") {
+        if (this.props.date === "") {
             var createCurrent = new Date();
             checkedDate = moment_1["default"](createCurrent).format("yyyy-MM-DD");
-            this.setState({ currentDate: checkedDate });
-            // this.setState({ today: checkedDate });
+            store_1["default"].dispatch(currentPhotoSlice_1.setDate(checkedDate));
         }
         else {
-            checkedDate = this.state.currentDate;
+            checkedDate = this.props.date;
         }
         var newDate = moment_1["default"](checkedDate).subtract(1, "days").format("yyyy-MM-DD");
-        this.setState({ currentDate: newDate });
         console.log("hit", newDate);
+        store_1["default"].dispatch(currentPhotoSlice_1.setDate(newDate));
         store_1["default"].dispatch(currentPhotoSlice_1.fetchPhotoByDate(newDate));
+    };
+    CurrentPhoto.prototype.checkState = function () {
+        console.log('state set', this.state.currentDate);
     };
     CurrentPhoto.prototype.render = function () {
         return (react_1["default"].createElement("div", { className: "container-fluid" },
@@ -85,13 +83,7 @@ var CurrentPhoto = /** @class */ (function (_super) {
 var mapStateToProps = function (state) {
     console.log('map hit');
     return {
-        currentPhoto: state.currentPhoto.photo,
         date: state.currentPhoto.date
     };
 };
-// const mapDispatchToProps = (dispatch: AppDispatch) => {
-//   return {
-//     fetchPhotoByDate: (date: string) => dispatch(fetchPhotoByDate(date))
-//   }
-// }
 exports["default"] = react_redux_1.connect(mapStateToProps)(CurrentPhoto);

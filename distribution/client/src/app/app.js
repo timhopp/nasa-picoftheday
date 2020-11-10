@@ -54,7 +54,6 @@ var App = function () {
     if (photoStatus === 'loading') {
         content =
             react_1["default"].createElement("div", null,
-                react_1["default"].createElement("h1", null, "NASA Picture of The Day"),
                 react_1["default"].createElement("p", null, " Loading"));
     }
     else if (photoStatus === 'succeeded') {

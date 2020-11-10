@@ -44,7 +44,7 @@ var Favorites = /** @class */ (function (_super) {
                     react_1["default"].createElement("div", { className: "col" },
                         react_1["default"].createElement("button", { className: "btn btn-success", onClick: function () { return _this.props.addFavorite(_this.props.currentPhoto); } }, "Add To Favorites")),
                     react_1["default"].createElement("div", { className: "col" },
-                        react_1["default"].createElement("h5", { className: "" }, "Date"),
+                        react_1["default"].createElement("h5", { className: "" }, "Select A Date"),
                         react_1["default"].createElement(datePicker_1["default"], null))),
                 react_1["default"].createElement("div", { className: "container-fluid" },
                     react_1["default"].createElement("div", { className: "row justify-content-center" },

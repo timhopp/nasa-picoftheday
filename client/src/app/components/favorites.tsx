@@ -56,7 +56,7 @@ class Favorites extends React.Component<favoriteProps, IState> {
       <div className="col">
 
 
-      <h5 className="">Date</h5>
+      <h5 className="">Select A Date</h5>
         <DateSelector></DateSelector> 
       </div>
       </div>

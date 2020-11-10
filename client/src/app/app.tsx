@@ -48,7 +48,6 @@ let content
 if(photoStatus === 'loading'){
    content =
   <div>
-  <h1>NASA Picture of The Day</h1>
   <p> Loading</p>
    </div>
 
@@ -71,8 +70,6 @@ if(photoStatus === 'loading'){
    {content}
        <Favorites></Favorites>
     </div>
-
-
 
     </div>
   );
