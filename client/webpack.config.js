@@ -38,8 +38,5 @@ module.exports = {
       template: path.resolve("src", "app", "index.html"),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.config().parsed),
-    }),
   ],
 };
