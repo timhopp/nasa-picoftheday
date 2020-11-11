@@ -74,10 +74,10 @@ const favoriteSlice = createSlice({
     },
     setUser(state, action: PayloadAction<User>){
       state.user = action.payload
-      state.userLoaded = true
       console.log('user set')
+      state.userLoaded = true
     },
-    logOut(state){
+    loginChange(state){
       state.userLoaded = false
     }
 
@@ -91,8 +91,6 @@ const favoriteSlice = createSlice({
     builder.addCase(removeFavorite.fulfilled, (state, action) => {
       let deleted = state.favorites.find(fav => fav._id === action.payload)
       state.favorites = state.favorites.filter(favorite => favorite !== deleted)
-      //why can't I do this in one step like below?? 
-      // state.favorites = state.favorites.filter(favorite => favorite._id !== action.payload),
     })
     builder.addCase(addFavorite.fulfilled, (state, action) => {
       state.favorites.push(action.payload)
@@ -101,9 +99,6 @@ const favoriteSlice = createSlice({
   }
 });
 
-//Reducers only look at the dispatched action and create a new state value without basing logic on what the current state might be.
-//Reducers also cannot handle asynchronous logic 
- export const { setCurrentFavorite, setUser, logOut } = favoriteSlice.actions 
-
+ export const { setCurrentFavorite, setUser, loginChange } = favoriteSlice.actions 
 
 export default favoriteSlice.reducer;

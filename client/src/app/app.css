@@ -37,6 +37,11 @@ body {
   max-height: 400px;
 }
 
+.modalimg {
+  max-width: 300px;
+  max-height: 250px;
+}
+
 .favimg {
   display: flex;
   width: 100%;

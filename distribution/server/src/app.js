@@ -40,17 +40,15 @@ app.use(cors_1["default"]());
 //parser is required before routes
 app.use(jsonParser);
 app.use(routes_1["default"]);
-//Figure out how to make api use static build, aka distribution?
+//Required so that Node knows where to find the starting point of the front end when server is running on Heroku. 
 if (process.env.NODE_ENV === "production") {
     //set static folder
     app.use(express_1["default"].static("client/distribution"));
     app.get("*", function (req, res) {
-        res.sendFile(path.resolve(__dirname, "client/distribution", "index.html"));
-        // res.sendFile("client/distribution/index.html");
+        res.sendFile(path.resolve("client/distribution/index.html"));
     });
 }
 var uri = "" + process.env.CONNECTION_STRING;
-// `${process.env.CONNECTION_STRING}`
 var options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose_1["default"].set("useFindAndModify", false);
 mongoose_1["default"]

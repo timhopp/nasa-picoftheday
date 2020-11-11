@@ -86,9 +86,7 @@ var Auth0Provider = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.config = {
             domain: "hoppdebopp.us.auth0.com",
-            // `${process.env.REACT_APP_AUTH0_DOMAIN}`,
             client_id: '2ThBp8M64bv0Cqsr3E7G3yNxmMT8Vf2q',
-            // `${process.env.REACT_APP_AUTH0_CLIENT_ID}`,
             redirect_uri: window.location.origin
         };
         // initialize the auth0 library
@@ -136,6 +134,7 @@ var Auth0Provider = /** @class */ (function (_super) {
                     case 2:
                         user = _a.sent();
                         this.setState({ user: user, isAuthenticated: true, isLoading: false });
+                        store_1["default"].dispatch(favoriteSlice_1.setUser(user));
                         window.history.replaceState({}, document.title, window.location.pathname);
                         return [2 /*return*/];
                 }

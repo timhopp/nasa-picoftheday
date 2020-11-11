@@ -19,7 +19,7 @@ interface IState {
   today: string;
 }
 
-//You need to define the prop { photo } then state that the prop is a type Photo
+//Need to define the prop { photo } then state that the prop is a type Photo
 class CurrentPhoto extends React.Component<currentProps, IState> {
   constructor(props: currentProps) {
     super(props);
@@ -92,14 +92,14 @@ class CurrentPhoto extends React.Component<currentProps, IState> {
       <div className="container-fluid">
         <div className="row align-items-center">
           <button
-            className="col btn btn-info ml-5"
+            className="col btn btn-info ml-3"
             onClick={this.fetchPrevious}>
             Previous
           </button>
-          <div className="col-8">
+          <div className="col-10">
            <PhotoCom></PhotoCom>
           </div>
-          <button className="col btn btn-info mr-5" onClick={this.fetchNext}>
+          <button className="col btn btn-info mr-3" onClick={this.fetchNext}>
             Next
           </button>
         </div>

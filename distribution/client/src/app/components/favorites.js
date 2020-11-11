@@ -19,7 +19,6 @@ exports.__esModule = true;
 var react_1 = __importDefault(require("react"));
 var react_redux_1 = require("react-redux");
 var favoriteSlice_1 = require("../reducers/favoriteSlice");
-var datePicker_1 = __importDefault(require("./datePicker"));
 var favoriteCom_1 = __importDefault(require("./favoriteCom"));
 var react_bootstrap_1 = require("react-bootstrap");
 require("../app.css");
@@ -55,24 +54,22 @@ var Favorites = /** @class */ (function (_super) {
                 react_1["default"].createElement("div", { className: "row justify-content-center" },
                     react_1["default"].createElement("div", { className: "col" },
                         react_1["default"].createElement("button", { className: "btn btn-success", onClick: function () { return _this.addFavorite(_this.props.currentPhoto); } }, "Add To Favorites")),
-                    react_1["default"].createElement("div", { className: "col" },
-                        react_1["default"].createElement("h5", { className: "" }, "Select A Date"),
-                        react_1["default"].createElement(datePicker_1["default"], null))),
-                react_1["default"].createElement("div", { className: "container-fluid" },
-                    react_1["default"].createElement("div", { className: "row justify-content-center" },
-                        react_1["default"].createElement("h5", null, "Favorites")),
-                    react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-2 bg-info m-3 rounded pointer hover", key: fav._id, onClick: _this.handleShow },
-                        react_1["default"].createElement(favoriteCom_1["default"], { key: fav.title, fav: fav }))); })))),
+                    react_1["default"].createElement("div", { className: "col" }),
+                    react_1["default"].createElement("div", { className: "container-fluid" },
+                        react_1["default"].createElement("div", { className: "row justify-content-center" },
+                            react_1["default"].createElement("h5", null, "Favorites")),
+                        react_1["default"].createElement("div", { className: "row justify-content-center" }, this.props.favorites.map(function (fav) { return (react_1["default"].createElement("div", { className: "col-2 bg-info m-3 rounded pointer hover", key: fav._id, onClick: _this.handleShow },
+                            react_1["default"].createElement(favoriteCom_1["default"], { key: fav.title, fav: fav }))); }))))),
             this.props.currentFav ?
                 react_1["default"].createElement(react_bootstrap_1.Modal, { show: this.state.show, size: "lg", onHide: this.handleClose },
                     react_1["default"].createElement(react_bootstrap_1.Modal.Body, { className: "bg-dark" },
                         react_1["default"].createElement("div", { className: "container-fluid" },
                             react_1["default"].createElement("div", { className: "row justify-content-center text-white" },
-                                react_1["default"].createElement("h2", null, this.props.currentFav.title),
-                                react_1["default"].createElement("img", { className: "img mb-5", src: this.props.currentFav.url, alt: "Image Not Available" }),
+                                react_1["default"].createElement("h2", { className: "col-12 text-center" }, this.props.currentFav.title),
+                                react_1["default"].createElement("img", { className: "modalimg mb-3 mt-3", src: this.props.currentFav.url, alt: "Image Not Available" }),
                                 react_1["default"].createElement("p", { className: "ml-4 mr-4" }, this.props.currentFav.explanation),
                                 react_1["default"].createElement("button", { className: "btn btn-danger mr-3", onClick: function () { _this.props.removeFavorite(_this.props.currentFav); _this.handleClose(); } }, "Remove"),
-                                react_1["default"].createElement("button", { className: "btn btn-danger ml-3", onClick: this.handleClose }, "Close")))))
+                                react_1["default"].createElement("button", { className: "btn btn-outline-danger ml-3", onClick: this.handleClose }, "Close")))))
                 : null));
     };
     return Favorites;
@@ -87,7 +84,6 @@ var mapStateToProps = function (state) {
 };
 var mapDispatchToProps = function (dispatch) {
     return {
-        // addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite)),
         removeFavorite: function (fav) { return dispatch(favoriteSlice_1.removeFavorite(fav._id)); }
     };
 };

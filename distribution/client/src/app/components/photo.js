@@ -12,5 +12,5 @@ exports.PhotoCom = function () {
         react_1["default"].createElement("h4", { className: "mt-2" }, photo.title),
         react_1["default"].createElement("div", { className: "row justify-content-center" },
             react_1["default"].createElement("img", { className: "img mb-2", src: photo.url, alt: "Image Not Available" })),
-        react_1["default"].createElement("p", { className: "mt-3" }, photo.explanation)));
+        react_1["default"].createElement("p", { className: "mt-1" }, photo.explanation)));
 };

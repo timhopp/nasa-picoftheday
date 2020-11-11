@@ -24,24 +24,13 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         use: ["ts-loader"],
-        // loader: ,
       },
       {
         enforce: "pre",
         test: /\.js$/,
-        use: ["source-map-loader"],
-        // loader: ,
       },
     ],
   },
-
-  //Breaking webpack from some reason, cannot find index.html
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: path.resolve(__dirname, "src", "app", "index.html"),
-  //   }),
-  //   new webpack.HotModuleReplacementPlugin(),
-  // ],
 
   plugins: [
     new HtmlWebpackPlugin({

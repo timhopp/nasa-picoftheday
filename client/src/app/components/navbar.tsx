@@ -1,10 +1,22 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React,  { useEffect } from 'react';
+import { useSelector,  useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '../features/auth0/auth0-context';
-import { logOut } from "../reducers/favoriteSlice"
-import store from "../store"
+import { loginChange } from "../reducers/favoriteSlice"
+import { User } from "../features/auth0/types"
+import { RootState } from "../reducers/index"
+
 function NavBar() {
     const { isLoading, user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
+    const dispatch = useDispatch();
+
+    const stateUser : User | {} = useSelector((state: RootState) => state.favorites.user)
+
+    useEffect(() => {
+        if(!user)
+        dispatch(loginChange())
+      }, [stateUser])
 
     return (
         <header>
@@ -31,12 +43,10 @@ function NavBar() {
                         )}
                     </Link>
                     </div>
-                    {/* <li><Link className={"nav-link"} to={"/"}> Home </Link></li> */}
             
                 </ul>
             </div>
         </header>
     );
 }
-// export default withRouter(Navbar);
   export default NavBar

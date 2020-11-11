@@ -92,12 +92,7 @@ const currentPhotoSlice = createSlice ({
   }
 });
 
-
-// use middleware Thunk to be able to do an async function
-// dispatch must be definied as type AppDispatch(more explanation!)
-// .get function must be defined as type Photo, otherwise it will be type any and cause error in Typescript
-//    However.. it still comes in as an object with the API's defined names and additional info
-   export const { setDate, setToday } = currentPhotoSlice.actions
+export const { setDate, setToday } = currentPhotoSlice.actions
 
 export default currentPhotoSlice.reducer;
 

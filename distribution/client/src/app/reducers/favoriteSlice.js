@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 exports.__esModule = true;
-exports.logOut = exports.setUser = exports.setCurrentFavorite = exports.removeFavorite = exports.addFavorite = exports.fetchFavorites = void 0;
+exports.loginChange = exports.setUser = exports.setCurrentFavorite = exports.removeFavorite = exports.addFavorite = exports.fetchFavorites = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
 var axios_1 = __importDefault(require("axios"));
 var initialState = {
@@ -103,10 +103,10 @@ var favoriteSlice = toolkit_1.createSlice({
         },
         setUser: function (state, action) {
             state.user = action.payload;
-            state.userLoaded = true;
             console.log('user set');
+            state.userLoaded = true;
         },
-        logOut: function (state) {
+        loginChange: function (state) {
             state.userLoaded = false;
         }
     },
@@ -119,8 +119,6 @@ var favoriteSlice = toolkit_1.createSlice({
         builder.addCase(exports.removeFavorite.fulfilled, function (state, action) {
             var deleted = state.favorites.find(function (fav) { return fav._id === action.payload; });
             state.favorites = state.favorites.filter(function (favorite) { return favorite !== deleted; });
-            //why can't I do this in one step like below?? 
-            // state.favorites = state.favorites.filter(favorite => favorite._id !== action.payload),
         });
         builder.addCase(exports.addFavorite.fulfilled, function (state, action) {
             state.favorites.push(action.payload);
@@ -128,7 +126,5 @@ var favoriteSlice = toolkit_1.createSlice({
         });
     }
 });
-//Reducers only look at the dispatched action and create a new state value without basing logic on what the current state might be.
-//Reducers also cannot handle asynchronous logic 
-exports.setCurrentFavorite = (_a = favoriteSlice.actions, _a.setCurrentFavorite), exports.setUser = _a.setUser, exports.logOut = _a.logOut;
+exports.setCurrentFavorite = (_a = favoriteSlice.actions, _a.setCurrentFavorite), exports.setUser = _a.setUser, exports.loginChange = _a.loginChange;
 exports["default"] = favoriteSlice.reducer;

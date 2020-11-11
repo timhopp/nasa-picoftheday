@@ -36,10 +36,7 @@ export class Auth0Provider extends Component<{}, IState> {
   }
   config: Auth0ClientOptions = {
       domain: "hoppdebopp.us.auth0.com",
-      // `${process.env.REACT_APP_AUTH0_DOMAIN}`,
       client_id: '2ThBp8M64bv0Cqsr3E7G3yNxmMT8Vf2q',
-      
-      // `${process.env.REACT_APP_AUTH0_CLIENT_ID}`,
       redirect_uri: window.location.origin
   };
   componentDidMount() {
@@ -64,6 +61,7 @@ export class Auth0Provider extends Component<{}, IState> {
     await this.state.auth0Client.handleRedirectCallback();
     const user = await this.state.auth0Client.getUser();
     this.setState({ user, isAuthenticated: true, isLoading: false });
+    store.dispatch(setUser(user))
     window.history.replaceState({}, document.title, window.location.pathname);
 };
 render() {

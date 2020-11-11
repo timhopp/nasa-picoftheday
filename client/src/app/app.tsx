@@ -11,13 +11,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { RootState } from "./reducers/index"
 import NavBar from "../app/components/navbar"
 import { User } from "./features/auth0/types"
-
-//App doesn't need to be wrapped here as it already is being wrapped by provider in Index.tsx. If wrapped in two places Redux store won't function right.
+import DateSelector from "./components/datePicker";
 
 export default function App (){
 
-  
-//Why should I use useDispatch here instead of AppDispatch? What exactly is the difference for Typescript? 
 const dispatch = useDispatch();
 
 //Need to export RootState and set state type to RootState to access reducers
@@ -51,13 +48,21 @@ if(photoStatus === 'loading'){
     content =
     <div>
       <CurrentPhoto></CurrentPhoto>
-      <Favorites></Favorites>
-    </div>
+      <div className="">
+      <h5 className="">Select A Date</h5>
+        <DateSelector></DateSelector> 
+        <Favorites></Favorites>
+      </div>
+      </div>
+
+
 } else if (photoStatus === 'succeeded' && userLoaded === false) {
     content = 
     <div>
       <CurrentPhoto></CurrentPhoto>
-     <div>To Access Your Favorites Please Log In</div>
+      <h5 className="">Select A Date</h5>
+        <DateSelector></DateSelector> 
+     <h5 className="mt-4">To Access Your Favorites Please Log In</h5>
     </div>
  } else if (photoStatus === 'failed') {
    content = 
@@ -72,11 +77,10 @@ if(photoStatus === 'loading'){
     <div className="App">
     <NavBar></NavBar>
     <div>
-    <h2 className="pt-2">NASA Picture of The Day</h2>
+    <h2>NASA Picture of The Day</h2>
    {content}
-     
+    
     </div>
-
     </div>
   );
 }

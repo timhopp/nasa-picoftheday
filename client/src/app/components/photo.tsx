@@ -4,8 +4,8 @@ import { RootState } from "../reducers/"
 import { Photo } from "../features/photos/types"
 
 export const PhotoCom = () => {
+  
 const photo : Photo = useSelector((state: RootState) => state.currentPhoto.photo)
-
 
   return (
 <div>
@@ -17,7 +17,7 @@ const photo : Photo = useSelector((state: RootState) => state.currentPhoto.photo
                 alt="Image Not Available"
               ></img>
             </div>
-            <p className="mt-3">{photo.explanation}</p>
+            <p className="mt-1">{photo.explanation}</p>
 </div>
   )
 }

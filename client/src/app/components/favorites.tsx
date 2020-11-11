@@ -5,7 +5,6 @@ import { RootState } from "../reducers/index";
 import { addFavorite, removeFavorite, } from "../reducers/favoriteSlice";
 import { Photo } from "../features/photos/types";
 import { User } from "../features/auth0/types"
-import DateSelector from "./datePicker";
 import Favorite from "./favoriteCom";
 import { Modal } from "react-bootstrap"
 import '../app.css';
@@ -64,9 +63,7 @@ class Favorites extends React.Component<favoriteProps, IState> {
       <div className="col">
 
 
-      <h5 className="">Select A Date</h5>
-        <DateSelector></DateSelector> 
-      </div>
+  
       </div>
       <div className = "container-fluid">
         <div className= "row justify-content-center">
@@ -84,6 +81,7 @@ class Favorites extends React.Component<favoriteProps, IState> {
       </div>
       </div>
     </div>
+    </div>
 
 {/* Requires turnary, otherwise will error out because currentFav prop doesn't exist */}
 {this.props.currentFav? 
@@ -91,13 +89,13 @@ class Favorites extends React.Component<favoriteProps, IState> {
         <Modal.Body className="bg-dark"  >
           <div className="container-fluid">
             <div className="row justify-content-center text-white">
-           <h2>{this.props.currentFav.title}</h2> 
-            <img className="img mb-5"
+           <h2 className="col-12 text-center">{this.props.currentFav.title}</h2> 
+            <img className="modalimg mb-3 mt-3"
                 src={this.props.currentFav.url}
              alt="Image Not Available" ></img>
             <p className="ml-4 mr-4">{this.props.currentFav.explanation}</p>
             <button className="btn btn-danger mr-3" onClick={() => {this.props.removeFavorite(this.props.currentFav); this.handleClose() }}>Remove</button>
-            <button className="btn btn-danger ml-3" onClick={this.handleClose}>
+            <button className="btn btn-outline-danger ml-3" onClick={this.handleClose}>
             Close
           </button>
 
@@ -109,9 +107,6 @@ class Favorites extends React.Component<favoriteProps, IState> {
 
 : null
 }
-  
-
-
     </div>
     )
   }
@@ -127,7 +122,6 @@ const mapStateToProps = (state: RootState ) => {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    // addFavorite: (newFavorite: Photo) => dispatch(addFavorite(newFavorite)),
     removeFavorite: (fav: Photo) => dispatch(removeFavorite(fav._id)),
   }
 }

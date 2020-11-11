@@ -22,7 +22,7 @@ var currentPhotoSlice_1 = require("../reducers/currentPhotoSlice");
 var moment_1 = __importDefault(require("moment"));
 var store_1 = __importDefault(require("../store"));
 var photo_1 = require("./photo");
-//You need to define the prop { photo } then state that the prop is a type Photo
+//Need to define the prop { photo } then state that the prop is a type Photo
 var CurrentPhoto = /** @class */ (function (_super) {
     __extends(CurrentPhoto, _super);
     function CurrentPhoto(props) {
@@ -93,10 +93,10 @@ var CurrentPhoto = /** @class */ (function (_super) {
     CurrentPhoto.prototype.render = function () {
         return (react_1["default"].createElement("div", { className: "container-fluid" },
             react_1["default"].createElement("div", { className: "row align-items-center" },
-                react_1["default"].createElement("button", { className: "col btn btn-info ml-5", onClick: this.fetchPrevious }, "Previous"),
-                react_1["default"].createElement("div", { className: "col-8" },
+                react_1["default"].createElement("button", { className: "col btn btn-info ml-3", onClick: this.fetchPrevious }, "Previous"),
+                react_1["default"].createElement("div", { className: "col-10" },
                     react_1["default"].createElement(photo_1.PhotoCom, null)),
-                react_1["default"].createElement("button", { className: "col btn btn-info mr-5", onClick: this.fetchNext }, "Next"))));
+                react_1["default"].createElement("button", { className: "col btn btn-info mr-3", onClick: this.fetchNext }, "Next"))));
     };
     return CurrentPhoto;
 }(react_1["default"].Component));

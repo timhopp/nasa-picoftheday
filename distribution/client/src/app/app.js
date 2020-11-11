@@ -31,9 +31,8 @@ var currentPhoto_1 = __importDefault(require("../app/components/currentPhoto"));
 var favorites_1 = __importDefault(require("../app/components/favorites"));
 require("bootstrap/dist/css/bootstrap.min.css");
 var navbar_1 = __importDefault(require("../app/components/navbar"));
-//App doesn't need to be wrapped here as it already is being wrapped by provider in Index.tsx. If wrapped in two places Redux store won't function right.
+var datePicker_1 = __importDefault(require("./components/datePicker"));
 function App() {
-    //Why should I use useDispatch here instead of AppDispatch? What exactly is the difference for Typescript? 
     var dispatch = react_redux_1.useDispatch();
     //Need to export RootState and set state type to RootState to access reducers
     var photoStatus = react_redux_1.useSelector(function (state) { return state.currentPhoto.status; });
@@ -61,13 +60,18 @@ function App() {
         content =
             react_1["default"].createElement("div", null,
                 react_1["default"].createElement(currentPhoto_1["default"], null),
-                react_1["default"].createElement(favorites_1["default"], null));
+                react_1["default"].createElement("div", { className: "" },
+                    react_1["default"].createElement("h5", { className: "" }, "Select A Date"),
+                    react_1["default"].createElement(datePicker_1["default"], null),
+                    react_1["default"].createElement(favorites_1["default"], null)));
     }
     else if (photoStatus === 'succeeded' && userLoaded === false) {
         content =
             react_1["default"].createElement("div", null,
                 react_1["default"].createElement(currentPhoto_1["default"], null),
-                react_1["default"].createElement("div", null, "To Access Your Favorites Please Log In"));
+                react_1["default"].createElement("h5", { className: "" }, "Select A Date"),
+                react_1["default"].createElement(datePicker_1["default"], null),
+                react_1["default"].createElement("h5", { className: "mt-4" }, "To Access Your Favorites Please Log In"));
     }
     else if (photoStatus === 'failed') {
         content =
@@ -80,7 +84,7 @@ function App() {
     return (react_1["default"].createElement("div", { className: "App" },
         react_1["default"].createElement(navbar_1["default"], null),
         react_1["default"].createElement("div", null,
-            react_1["default"].createElement("h2", { className: "pt-2" }, "NASA Picture of The Day"),
+            react_1["default"].createElement("h2", null, "NASA Picture of The Day"),
             content)));
 }
 exports["default"] = App;
