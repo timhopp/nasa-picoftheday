@@ -457,22 +457,67 @@
         "affectsGlobalScope": false
       },
       "../src/types/favorite.ts": {
-        "version": "28d28f0156d4731f3ef62115a7315a682324304e6c37beede7b425beb2b7e9b7",
-        "signature": "07ebabccb0a57abfa5c9a5d8f7e3471166edf250f6f1f71cbce6ffd946eda0a2",
+        "version": "7891303320d00e5fd5c69a11d69f6ec55984cfa8468649b5c2f2fcdd0b58fa81",
+        "signature": "ea74eb9f3ad63b3d1befb16c84e3535b38e432a14fb2b73effb582b2091fd158",
         "affectsGlobalScope": false
       },
       "../src/models/favorite.ts": {
-        "version": "22726b5bb8b7ce47496bf8309d0f24f497e4bde951751adc091c8809d2b82d66",
+        "version": "bdb716d388cf710cc46056e1df6b729848dd912c1700208981898f9447aa53f4",
         "signature": "f36f296fb320886e09ed3ce99f576a308d2d5bef99ac38db2aacf7f0b0714f60",
         "affectsGlobalScope": false
       },
+      "../../node_modules/reflect-metadata/index.d.ts": {
+        "version": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
+        "signature": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
+        "affectsGlobalScope": true
+      },
+      "../../node_modules/typegoose/lib/method.d.ts": {
+        "version": "34554bb01ce73f19cac31d70be11aac5996e92b90c3341aff53f034bd705a482",
+        "signature": "34554bb01ce73f19cac31d70be11aac5996e92b90c3341aff53f034bd705a482",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/prop.d.ts": {
+        "version": "7b028de6a21c2dd82dd48824fb2112fa28c390637cdd6b5e0b7785e2e9b088f2",
+        "signature": "7b028de6a21c2dd82dd48824fb2112fa28c390637cdd6b5e0b7785e2e9b088f2",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/hooks.d.ts": {
+        "version": "b58ba605eaec3b2c98c35f43992f477a30b0bd1581bce618527faeb505d90df7",
+        "signature": "b58ba605eaec3b2c98c35f43992f477a30b0bd1581bce618527faeb505d90df7",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/plugin.d.ts": {
+        "version": "e426f7f2875abcc3471ea97ced10b2d39981bc27770071b78f0eacef8607282a",
+        "signature": "e426f7f2875abcc3471ea97ced10b2d39981bc27770071b78f0eacef8607282a",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/index.d.ts": {
+        "version": "3a53042722e64b3464dcf8b5ba127c57dc913f3d87ecec92a47473dfed568d27",
+        "signature": "3a53042722e64b3464dcf8b5ba127c57dc913f3d87ecec92a47473dfed568d27",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/typeguards.d.ts": {
+        "version": "654d319ce284f57f68ea522f46dd3d4fbd0bc908985dc0615f7113e3f55a586e",
+        "signature": "654d319ce284f57f68ea522f46dd3d4fbd0bc908985dc0615f7113e3f55a586e",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/utils.d.ts": {
+        "version": "4e624b7127924037100c74941270927917209c55f7a8931050b1f66f30c20320",
+        "signature": "4e624b7127924037100c74941270927917209c55f7a8931050b1f66f30c20320",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/typegoose/lib/typegoose.d.ts": {
+        "version": "337b59162e187410318f0ac546d805f8714901413e694f515ef6cffb5436a7d3",
+        "signature": "337b59162e187410318f0ac546d805f8714901413e694f515ef6cffb5436a7d3",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/favorites.ts": {
-        "version": "35b4c59c396b81920ad320f1629deb9825f105af37740fc6bc35d910afaabf73",
-        "signature": "f5a801e1879ab8fa309bd45a3773521202907317b4ec8512c60ed0eb11a1aa4e",
+        "version": "0cb25300093fb508567ceea501d2edcc78019c87a650a05f1fbf022ac9293a9b",
+        "signature": "1a0a31140e77edb1c7e391a68d32dc4ccdf317893135841fbf9c04db8450d355",
         "affectsGlobalScope": false
       },
       "../src/routes/index.ts": {
-        "version": "2a8acc9b351e588b5a92241a4704d52f9bb87208d4ea8fa9ba4f59d92e15c49d",
+        "version": "74f709712e697833dfbd75c6dfee231da6feea509a996a00921c5192f4238d75",
         "signature": "fea68f4897c1fa5343c7c89705a82f6d65c931fdff1a21cbbe9864557640114a",
         "affectsGlobalScope": false
       },
@@ -482,8 +527,13 @@
         "affectsGlobalScope": false
       },
       "../src/app.ts": {
-        "version": "c07e8196e2d31427261ba757efadf9b2c105ae821f8cce26a7eb572c0268c4f5",
+        "version": "c47f622b688ba1c32edec013771e8c3ac2b1766f1c7f1809965e49ab251d9a61",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/auth0/index.d.ts": {
+        "version": "40ef45c1f4614670181acc9c59501fa013dd5f18300c28c94de3a56df97df1c6",
+        "signature": "40ef45c1f4614670181acc9c59501fa013dd5f18300c28c94de3a56df97df1c6",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/eslint/helpers.d.ts": {
@@ -510,16 +560,21 @@
         "version": "274bda283ef15f4205603ca9967313fc013aa77ae89f2cbeab5fbd51439e96ed",
         "signature": "274bda283ef15f4205603ca9967313fc013aa77ae89f2cbeab5fbd51439e96ed",
         "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/webpack-env/index.d.ts": {
+        "version": "9575baefb3597b2bf1514d36839d36ab8404dfcb5ad4b1a322165a96fbd618e7",
+        "signature": "9575baefb3597b2bf1514d36839d36ab8404dfcb5ad4b1a322165a96fbd618e7",
+        "affectsGlobalScope": true
       }
     },
     "options": {
-      "strictNullChecks": true,
+      "strictNullChecks": false,
       "esModuleInterop": true,
       "allowJs": true,
+      "outDir": "./",
       "jsx": 2,
       "target": 2,
       "module": 1,
-      "outDir": "./",
       "strict": true,
       "removeComments": true,
       "resolveJsonModule": true,
@@ -705,6 +760,30 @@
       "../../node_modules/@types/node/zlib.d.ts": [
         "../../node_modules/@types/node/stream.d.ts"
       ],
+      "../../node_modules/typegoose/lib/hooks.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/prop.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/typegoose.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts",
+        "../../node_modules/reflect-metadata/index.d.ts",
+        "../../node_modules/typegoose/lib/hooks.d.ts",
+        "../../node_modules/typegoose/lib/index.d.ts",
+        "../../node_modules/typegoose/lib/method.d.ts",
+        "../../node_modules/typegoose/lib/plugin.d.ts",
+        "../../node_modules/typegoose/lib/prop.d.ts",
+        "../../node_modules/typegoose/lib/typeguards.d.ts",
+        "../../node_modules/typegoose/lib/utils.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/typeguards.d.ts": [
+        "../../node_modules/typegoose/lib/prop.d.ts",
+        "../../node_modules/typegoose/lib/typegoose.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/utils.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../node_modules/dotenv/types/index.d.ts": [
         "../../node_modules/@types/node/index.d.ts"
       ],
@@ -718,6 +797,7 @@
       ],
       "../src/controllers/favorites.ts": [
         "../../../node_modules/@types/express/index.d.ts",
+        "../../node_modules/typegoose/lib/typegoose.d.ts",
         "../src/models/favorite.ts",
         "../src/types/favorite.ts"
       ],
@@ -957,6 +1037,30 @@
       "../../node_modules/@types/node/zlib.d.ts": [
         "../../node_modules/@types/node/stream.d.ts"
       ],
+      "../../node_modules/typegoose/lib/hooks.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/prop.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/typegoose.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts",
+        "../../node_modules/reflect-metadata/index.d.ts",
+        "../../node_modules/typegoose/lib/hooks.d.ts",
+        "../../node_modules/typegoose/lib/index.d.ts",
+        "../../node_modules/typegoose/lib/method.d.ts",
+        "../../node_modules/typegoose/lib/plugin.d.ts",
+        "../../node_modules/typegoose/lib/prop.d.ts",
+        "../../node_modules/typegoose/lib/typeguards.d.ts",
+        "../../node_modules/typegoose/lib/utils.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/typeguards.d.ts": [
+        "../../node_modules/typegoose/lib/prop.d.ts",
+        "../../node_modules/typegoose/lib/typegoose.d.ts"
+      ],
+      "../../node_modules/typegoose/lib/utils.d.ts": [
+        "../../../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../node_modules/dotenv/types/index.d.ts": [
         "../../node_modules/@types/node/index.d.ts"
       ],
@@ -1022,6 +1126,7 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../../node_modules/@types/auth0/index.d.ts",
       "../../node_modules/@types/eslint-scope/index.d.ts",
       "../../node_modules/@types/eslint/helpers.d.ts",
       "../../node_modules/@types/eslint/index.d.ts",
@@ -1074,6 +1179,16 @@
       "../../node_modules/@types/node/wasi.d.ts",
       "../../node_modules/@types/node/worker_threads.d.ts",
       "../../node_modules/@types/node/zlib.d.ts",
+      "../../node_modules/@types/webpack-env/index.d.ts",
+      "../../node_modules/reflect-metadata/index.d.ts",
+      "../../node_modules/typegoose/lib/hooks.d.ts",
+      "../../node_modules/typegoose/lib/index.d.ts",
+      "../../node_modules/typegoose/lib/method.d.ts",
+      "../../node_modules/typegoose/lib/plugin.d.ts",
+      "../../node_modules/typegoose/lib/prop.d.ts",
+      "../../node_modules/typegoose/lib/typegoose.d.ts",
+      "../../node_modules/typegoose/lib/typeguards.d.ts",
+      "../../node_modules/typegoose/lib/utils.d.ts",
       "../node_modules/dotenv/types/index.d.ts",
       "../src/app.ts",
       "../src/controllers/favorites.ts",

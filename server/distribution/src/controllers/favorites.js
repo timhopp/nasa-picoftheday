@@ -12,11 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteFavorite = exports.addFavorite = exports.getFavorites = void 0;
+exports.deleteAllFavorites = exports.deleteFavorite = exports.addFavorite = exports.getFavorites = void 0;
 const favorite_1 = __importDefault(require("../models/favorite"));
 const getFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const favorites = yield favorite_1.default.find();
+        const favorites = yield favorite_1.default.find({ user: req.params.user });
         res.status(200).json(favorites);
     }
     catch (error) {
@@ -33,13 +33,13 @@ const addFavorite = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             date: body.date,
             explanation: body.explanation,
             url: body.url,
-            copyright: body.copyright
+            copyright: body.copyright,
+            user: body.user
         });
         const newFavorite = yield favorite.save();
-        const allFavorites = yield favorite_1.default.find();
         res
             .status(201)
-            .json({ message: 'Favorite Added', favorite: newFavorite, favorites: allFavorites });
+            .json(favorite);
     }
     catch (error) {
         throw error;
@@ -61,3 +61,15 @@ const deleteFavorite = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.deleteFavorite = deleteFavorite;
+const deleteAllFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const deletedFavorites = yield favorite_1.default.deleteMany({ "date": "2020-11-10" });
+        res.status(200).json({
+            message: 'DELETED'
+        });
+    }
+    catch (error) {
+        throw error;
+    }
+});
+exports.deleteAllFavorites = deleteAllFavorites;
