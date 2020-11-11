@@ -79,7 +79,7 @@ function App() {
                 react_1["default"].createElement("h3", null,
                     " ",
                     error),
-                react_1["default"].createElement("h5", null, "Select A Date isn't in The Future "));
+                react_1["default"].createElement("h5", null, "Sorry About That! Try selecting A Date isn't in The Future. "));
     }
     return (react_1["default"].createElement("div", { className: "App" },
         react_1["default"].createElement(navbar_1["default"], null),

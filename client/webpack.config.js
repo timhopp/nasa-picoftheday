@@ -1,6 +1,7 @@
 const path = require("path"),
   webpack = require("webpack"),
   HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require("dotenv");
 
 module.exports = {
   entry: {
@@ -28,6 +29,7 @@ module.exports = {
       {
         enforce: "pre",
         test: /\.js$/,
+        use: ["source-map-loader"],
       },
     ],
   },
@@ -37,5 +39,8 @@ module.exports = {
       template: path.resolve("src", "app", "index.html"),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.config().parsed),
+    }),
   ],
 };
