@@ -5,5 +5,5 @@ export interface Photo {
   copyright: string,
   explanation: string,
   url: string,
-  email?: string
+  user?: string
 }

@@ -4,7 +4,7 @@ import { getFavorites, addFavorite, deleteFavorite, deleteAllFavorites } from ".
 const router: Router = Router()
 
 
-router.get("/favorites/:email", getFavorites)
+router.get("/favorites/:user", getFavorites)
 
 router.post("/addfavorite", addFavorite)
 

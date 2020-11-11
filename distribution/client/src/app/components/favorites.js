@@ -43,7 +43,8 @@ var Favorites = /** @class */ (function (_super) {
             alert("Cannot have the same favorite twice!");
         }
         else {
-            var updatedFav = Object.assign({}, newFavorite, { email: this.props.user.email });
+            //assign function is required to create copy, otherwise TS errors out stating that object in nonextensible. 
+            var updatedFav = Object.assign({}, newFavorite, { user: this.props.user.sub });
             store_1["default"].dispatch(favoriteSlice_1.addFavorite(updatedFav));
         }
     };

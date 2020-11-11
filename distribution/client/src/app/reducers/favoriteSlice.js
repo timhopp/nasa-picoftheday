@@ -61,7 +61,7 @@ exports.fetchFavorites = toolkit_1.createAsyncThunk("reducers/fetchFavorites", f
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, api.get("favorites/" + user.email)];
+            case 0: return [4 /*yield*/, api.get("favorites/" + user.sub)];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
@@ -109,8 +109,6 @@ var favoriteSlice = toolkit_1.createSlice({
         logOut: function (state) {
             state.userLoaded = false;
         }
-        // deleteFavorite(state, action: PayloadAction<Photo>  ){ 
-        // },
     },
     extraReducers: function (builder) {
         builder.addCase(exports.fetchFavorites.fulfilled, function (state, action) {

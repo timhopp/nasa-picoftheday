@@ -22,7 +22,7 @@ var favoriteSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    email: {
+    user: {
         type: String,
         required: true
     }

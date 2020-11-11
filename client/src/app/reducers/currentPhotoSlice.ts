@@ -1,13 +1,8 @@
-import { AppThunk, AppDispatch } from "../store"
+
 import { Photo } from "../features/photos/types";
-import axios from "axios";
-import { SET_CURRENT, SET_NEWCURRENT, currentPhotoTypes} from "./types/currentPhoto"
-import { RootState } from ".";
-import { ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import { PhotoCom } from "../components/photo";
-  
+import axios from "axios"; 
 import { createSlice, createAsyncThunk, PayloadAction } from"@reduxjs/toolkit";
-import moment from "moment"
+
 
 //Need an interface to declare the initial states type
 export interface PhotoState {

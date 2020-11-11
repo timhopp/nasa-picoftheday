@@ -34,7 +34,7 @@ export const fetchFavorites = createAsyncThunk(
   "reducers/fetchFavorites",
   async (user : User) => {
      const response = await api.get<Photo>(
-      "favorites/" + user.email
+      "favorites/" + user.sub
     );
    return response.data;
   }
@@ -81,10 +81,6 @@ const favoriteSlice = createSlice({
       state.userLoaded = false
     }
 
-    // deleteFavorite(state, action: PayloadAction<Photo>  ){ 
- 
-      
-    // },
   },
   extraReducers: builder =>{
     builder.addCase(fetchFavorites.fulfilled, (state, action) => {

@@ -44,7 +44,8 @@ class Favorites extends React.Component<favoriteProps, IState> {
     if(this.props.favorites.filter(fav => fav.title === newFavorite.title).length > 0 ){
       alert("Cannot have the same favorite twice!")
     } else {
-     let updatedFav = Object.assign({}, newFavorite, {email: this.props.user.email})
+    //assign function is required to create copy, otherwise TS errors out stating that object in nonextensible. 
+     let updatedFav = Object.assign({}, newFavorite, {user: this.props.user.sub})
       store.dispatch(addFavorite(updatedFav))
   }
 }
