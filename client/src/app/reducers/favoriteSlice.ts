@@ -1,28 +1,28 @@
 import { createSlice, PayloadAction, createAsyncThunk} from"@reduxjs/toolkit";
 import { Photo } from "../features/photos/types";
+import { User } from "../features/auth0/types"
 import axios from "axios"
-
 
 
 export interface FavoriteState {
   favorites: Photo[],
   currentFavorite: Photo[],
+  user: {},
+  userLoaded: boolean,
   status: 'idle' | 'loading' | 'succeeded' | 'failed',
   error: string | null | undefined
 }
 
-// interface Duplicate {
-//   duplicate: number
-// }
-//Does this simply ensure an empy array is only Photo types? 
 const initialState: FavoriteState = {
 favorites: [] as Photo[],
 currentFavorite: [] as Photo [],
+user: {} as User,
+userLoaded: false,
 status: 'idle',
 error: null
 }
 
-
+//Allows server to connect when hosted locally or on Heroku
 let base = window.location.host.includes("localhost") ? "//localhost:3000/" : "/";
 
 let api = axios.create({
@@ -32,23 +32,19 @@ let api = axios.create({
 
 export const fetchFavorites = createAsyncThunk(
   "reducers/fetchFavorites",
-  async () => {
+  async (user : User) => {
      const response = await api.get<Photo>(
-      "favorites"
-    
+      "favorites/" + user.email
     );
-  // console.log(response.data)
    return response.data;
-  //  dispatch(setFavorites(response.data))
-
   }
 )
 
 export const addFavorite = createAsyncThunk(
   "reducers/addFavorite",
-  async(newFavorite: Photo) => {
+  async(updatedFav: Photo) => {
     const response = await api.post<Photo>(
-      "addFavorite", newFavorite 
+      "addFavorite", updatedFav 
     )
     return response.data;
   }
@@ -75,6 +71,14 @@ const favoriteSlice = createSlice({
     setCurrentFavorite(state, action: PayloadAction<Photo>){
       state.currentFavorite.splice(0, 1,action.payload)
       console.log('favorite set')
+    },
+    setUser(state, action: PayloadAction<User>){
+      state.user = action.payload
+      state.userLoaded = true
+      console.log('user set')
+    },
+    logOut(state){
+      state.userLoaded = false
     }
 
     // deleteFavorite(state, action: PayloadAction<Photo>  ){ 
@@ -103,7 +107,7 @@ const favoriteSlice = createSlice({
 
 //Reducers only look at the dispatched action and create a new state value without basing logic on what the current state might be.
 //Reducers also cannot handle asynchronous logic 
- export const { setCurrentFavorite } = favoriteSlice.actions 
+ export const { setCurrentFavorite, setUser, logOut } = favoriteSlice.actions 
 
 
 export default favoriteSlice.reducer;

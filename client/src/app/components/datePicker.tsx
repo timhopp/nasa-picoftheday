@@ -4,8 +4,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { fetchPhotoByDate, setDate} from "../reducers/currentPhotoSlice"
 import moment from "moment"
-import { RootState } from "../reducers/index"
-import { connect } from "react-redux";
 
 
 interface DateProps {
@@ -32,8 +30,6 @@ handleChange(date: Date) {
     startDate: date });
   // this.props.changePhoto(date);
   }
-
-
 
 render(){
   const  { startDate } = this.state;

@@ -83,11 +83,8 @@ const currentPhotoSlice = createSlice ({
     })
 
     //builders for fetchByDate
+    //Purposely don't have a loading builder so there is always a photo loaded
 
-    builder.addCase(fetchPhotoByDate.pending, (state, action) => {
-      console.log('loaded')
-      state.status = 'loading';
-  })
     builder.addCase(fetchPhotoByDate.fulfilled, (state, action) => {
       state.status = "succeeded";
       state.photo = action.payload  

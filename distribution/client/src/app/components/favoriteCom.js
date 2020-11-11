@@ -19,7 +19,6 @@ exports.__esModule = true;
 var react_1 = __importDefault(require("react"));
 var react_redux_1 = require("react-redux");
 var favoriteSlice_1 = require("../reducers/favoriteSlice");
-//The prop needs to be passed in, then also compared (need to know why it can't be just the right object though)
 var Favorite = /** @class */ (function (_super) {
     __extends(Favorite, _super);
     function Favorite(props) {
@@ -36,7 +35,6 @@ var Favorite = /** @class */ (function (_super) {
 }(react_1["default"].Component));
 var mapDispatchToProps = function (dispatch) {
     return {
-        // deleteFavorite: (fav: Photo) => dispatch(deleteFavorite(fav)),
         currentFavorite: function (fav) { return dispatch(favoriteSlice_1.setCurrentFavorite(fav)); }
     };
 };

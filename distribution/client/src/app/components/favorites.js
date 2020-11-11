@@ -43,7 +43,8 @@ var Favorites = /** @class */ (function (_super) {
             alert("Cannot have the same favorite twice!");
         }
         else {
-            store_1["default"].dispatch(favoriteSlice_1.addFavorite(newFavorite));
+            var updatedFav = Object.assign({}, newFavorite, { email: this.props.user.email });
+            store_1["default"].dispatch(favoriteSlice_1.addFavorite(updatedFav));
         }
     };
     Favorites.prototype.render = function () {
@@ -79,7 +80,8 @@ var mapStateToProps = function (state) {
     return {
         currentPhoto: state.currentPhoto.photo,
         favorites: state.favorites.favorites,
-        currentFav: state.favorites.currentFavorite[0]
+        currentFav: state.favorites.currentFavorite[0],
+        user: state.favorites.user
     };
 };
 var mapDispatchToProps = function (dispatch) {

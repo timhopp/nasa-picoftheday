@@ -47,7 +47,7 @@ var getFavorites = function (req, res) { return __awaiter(void 0, void 0, void 0
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, favorite_1["default"].find()];
+                return [4 /*yield*/, favorite_1["default"].find({ email: req.params.email })];
             case 1:
                 favorites = _a.sent();
                 res.status(200).json(favorites);
@@ -73,7 +73,8 @@ var addFavorite = function (req, res) { return __awaiter(void 0, void 0, void 0,
                     date: body.date,
                     explanation: body.explanation,
                     url: body.url,
-                    copyright: body.copyright
+                    copyright: body.copyright,
+                    email: body.email
                 });
                 return [4 /*yield*/, favorite.save()];
             case 1:

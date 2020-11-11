@@ -101,10 +101,7 @@ var currentPhotoSlice = toolkit_1.createSlice({
             state.error = action.error.message;
         });
         //builders for fetchByDate
-        builder.addCase(exports.fetchPhotoByDate.pending, function (state, action) {
-            console.log('loaded');
-            state.status = 'loading';
-        });
+        //Purposely don't have a loading builder so there is always a photo loaded
         builder.addCase(exports.fetchPhotoByDate.fulfilled, function (state, action) {
             state.status = "succeeded";
             state.photo = action.payload;

@@ -8,12 +8,12 @@ var react_dom_1 = __importDefault(require("react-dom"));
 var app_1 = __importDefault(require("./app"));
 var react_redux_1 = require("react-redux");
 var store_1 = __importDefault(require("../app/store"));
+var auth0_context_1 = require("../app/features/auth0/auth0-context");
+var react_router_dom_1 = require("react-router-dom");
 function render() {
-    // const App = require('./App').default
     react_dom_1["default"].render(react_1["default"].createElement(react_redux_1.Provider, { store: store_1["default"] },
-        react_1["default"].createElement(app_1["default"], null)), document.getElementById('root'));
+        react_1["default"].createElement(auth0_context_1.Auth0Provider, null,
+            react_1["default"].createElement(react_router_dom_1.BrowserRouter, null,
+                react_1["default"].createElement(app_1["default"], null)))), document.getElementById('root'));
 }
 render();
-// if (process.env.NODE_ENV === 'development' && module.hot) {
-//   module.hot.accept('./App', render)
-// }

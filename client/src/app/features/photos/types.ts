@@ -4,5 +4,6 @@ export interface Photo {
   title: string,
   copyright: string,
   explanation: string,
-  url: string
+  url: string,
+  email?: string
 }

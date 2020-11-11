@@ -5,7 +5,7 @@ import { InstanceType} from "typegoose"
 
 const getFavorites = async (req: Request, res: Response): Promise<void> => {
   try {
-    const favorites: IFavorite[] = await Favorite.find()
+    const favorites: IFavorite[] = await Favorite.find({ email: req.params.email })
     res.status(200).json(favorites)
   } catch (error) {
     throw error
@@ -15,14 +15,15 @@ const getFavorites = async (req: Request, res: Response): Promise<void> => {
 const addFavorite = async ( req: Request, res: Response): Promise<void> => {
   try {
     debugger
-    const body = req.body  as Pick<IFavorite, "title" | "date" | "explanation" | "url" | "copyright" >
+    const body = req.body  as Pick<IFavorite, "title" | "date" | "explanation" | "url" | "copyright" | "email" >
 
     const favorite: IFavorite = new Favorite({
       title: body.title, 
       date: body.date,
       explanation: body.explanation, 
       url: body.url,
-      copyright: body.copyright
+      copyright: body.copyright,
+      email: body.email
     })
 
     //saves favorite to mongodb

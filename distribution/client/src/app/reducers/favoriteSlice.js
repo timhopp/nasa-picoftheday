@@ -38,42 +38,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var _a;
 exports.__esModule = true;
-exports.setCurrentFavorite = exports.removeFavorite = exports.addFavorite = exports.fetchFavorites = void 0;
+exports.logOut = exports.setUser = exports.setCurrentFavorite = exports.removeFavorite = exports.addFavorite = exports.fetchFavorites = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
 var axios_1 = __importDefault(require("axios"));
-// interface Duplicate {
-//   duplicate: number
-// }
-//Does this simply ensure an empy array is only Photo types? 
 var initialState = {
     favorites: [],
     currentFavorite: [],
+    user: {},
+    userLoaded: false,
     status: 'idle',
     error: null
 };
+//Allows server to connect when hosted locally or on Heroku
 var base = window.location.host.includes("localhost") ? "//localhost:3000/" : "/";
 var api = axios_1["default"].create({
     baseURL: base,
     timeout: 3000
 });
-exports.fetchFavorites = toolkit_1.createAsyncThunk("reducers/fetchFavorites", function () { return __awaiter(void 0, void 0, void 0, function () {
+exports.fetchFavorites = toolkit_1.createAsyncThunk("reducers/fetchFavorites", function (user) { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, api.get("favorites")];
+            case 0: return [4 /*yield*/, api.get("favorites/" + user.email)];
             case 1:
                 response = _a.sent();
-                // console.log(response.data)
                 return [2 /*return*/, response.data];
         }
     });
 }); });
-exports.addFavorite = toolkit_1.createAsyncThunk("reducers/addFavorite", function (newFavorite) { return __awaiter(void 0, void 0, void 0, function () {
+exports.addFavorite = toolkit_1.createAsyncThunk("reducers/addFavorite", function (updatedFav) { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, api.post("addFavorite", newFavorite)];
+            case 0: return [4 /*yield*/, api.post("addFavorite", updatedFav)];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
@@ -101,6 +100,14 @@ var favoriteSlice = toolkit_1.createSlice({
         setCurrentFavorite: function (state, action) {
             state.currentFavorite.splice(0, 1, action.payload);
             console.log('favorite set');
+        },
+        setUser: function (state, action) {
+            state.user = action.payload;
+            state.userLoaded = true;
+            console.log('user set');
+        },
+        logOut: function (state) {
+            state.userLoaded = false;
         }
         // deleteFavorite(state, action: PayloadAction<Photo>  ){ 
         // },
@@ -125,5 +132,5 @@ var favoriteSlice = toolkit_1.createSlice({
 });
 //Reducers only look at the dispatched action and create a new state value without basing logic on what the current state might be.
 //Reducers also cannot handle asynchronous logic 
-exports.setCurrentFavorite = favoriteSlice.actions.setCurrentFavorite;
+exports.setCurrentFavorite = (_a = favoriteSlice.actions, _a.setCurrentFavorite), exports.setUser = _a.setUser, exports.logOut = _a.logOut;
 exports["default"] = favoriteSlice.reducer;

@@ -6,10 +6,9 @@ import {  setCurrentFavorite } from "../reducers/favoriteSlice";
 
 interface favProps {
   fav: Photo
-  
   currentFavorite: (fav: Photo) => void
 }
-//The prop needs to be passed in, then also compared (need to know why it can't be just the right object though)
+
 class Favorite extends React.Component<favProps>{
   
   constructor(props: favProps){
@@ -25,7 +24,6 @@ class Favorite extends React.Component<favProps>{
         <img className="favimg p-1" src={this.props.fav.url} alt="Image Not Available"></img>
 
         </div>
-        
       </div>
     )
 
@@ -36,9 +34,7 @@ class Favorite extends React.Component<favProps>{
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    // deleteFavorite: (fav: Photo) => dispatch(deleteFavorite(fav)),
-  
-    currentFavorite: (fav: Photo) => dispatch(setCurrentFavorite(fav))
+   currentFavorite: (fav: Photo) => dispatch(setCurrentFavorite(fav))
   }
 }
 

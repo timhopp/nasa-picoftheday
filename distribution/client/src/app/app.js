@@ -24,42 +24,50 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var react_1 = __importStar(require("react"));
 require("./app.css");
-var redux_1 = require("redux");
 var react_redux_1 = require("react-redux");
 var currentPhotoSlice_1 = require("../app/reducers/currentPhotoSlice");
 var favoriteSlice_1 = require("../app/reducers/favoriteSlice");
-var redux_thunk_1 = __importDefault(require("redux-thunk"));
 var currentPhoto_1 = __importDefault(require("../app/components/currentPhoto"));
 var favorites_1 = __importDefault(require("../app/components/favorites"));
 require("bootstrap/dist/css/bootstrap.min.css");
-var middlewareEnhancer = redux_1.applyMiddleware(redux_thunk_1["default"]);
-var composedEnhancers = redux_1.compose(middlewareEnhancer);
-var AppWrapper = function () {
-    // const store = createStore(rootReducer, undefined, composedEnhancers);
-    return (react_1["default"].createElement(App, null));
-};
-var App = function () {
+var navbar_1 = __importDefault(require("../app/components/navbar"));
+//App doesn't need to be wrapped here as it already is being wrapped by provider in Index.tsx. If wrapped in two places Redux store won't function right.
+function App() {
     //Why should I use useDispatch here instead of AppDispatch? What exactly is the difference for Typescript? 
     var dispatch = react_redux_1.useDispatch();
     //Need to export RootState and set state type to RootState to access reducers
     var photoStatus = react_redux_1.useSelector(function (state) { return state.currentPhoto.status; });
     var error = react_redux_1.useSelector(function (state) { return state.currentPhoto.error; });
+    var userLoaded = react_redux_1.useSelector(function (state) { return state.favorites.userLoaded; });
+    var user = react_redux_1.useSelector(function (state) { return state.favorites.user; });
     react_1.useEffect(function () {
         if (photoStatus == 'idle')
             dispatch(currentPhotoSlice_1.fetchCurrentPhoto());
-        dispatch(favoriteSlice_1.fetchFavorites());
         // Adding the empty array as a second argument ensures it only is called once.
     }, []);
+    react_1.useEffect(function () {
+        if (userLoaded === true)
+            dispatch(favoriteSlice_1.fetchFavorites(user));
+        console.log('useEffect hit?');
+        //Watches userLoaded and runs if changed
+    }, [userLoaded]);
     var content;
     if (photoStatus === 'loading') {
         content =
             react_1["default"].createElement("div", null,
                 react_1["default"].createElement("p", null, " Loading"));
     }
-    else if (photoStatus === 'succeeded') {
+    else if (photoStatus === 'succeeded' && userLoaded === true) {
         content =
             react_1["default"].createElement("div", null,
-                react_1["default"].createElement(currentPhoto_1["default"], null));
+                react_1["default"].createElement(currentPhoto_1["default"], null),
+                react_1["default"].createElement(favorites_1["default"], null));
+    }
+    else if (photoStatus === 'succeeded' && userLoaded === false) {
+        content =
+            react_1["default"].createElement("div", null,
+                react_1["default"].createElement(currentPhoto_1["default"], null),
+                react_1["default"].createElement("div", null, "To Access Your Favorites Please Log In"));
     }
     else if (photoStatus === 'failed') {
         content =
@@ -70,9 +78,9 @@ var App = function () {
                 react_1["default"].createElement("h5", null, "Select A Date isn't in The Future "));
     }
     return (react_1["default"].createElement("div", { className: "App" },
+        react_1["default"].createElement(navbar_1["default"], null),
         react_1["default"].createElement("div", null,
             react_1["default"].createElement("h2", { className: "pt-2" }, "NASA Picture of The Day"),
-            content,
-            react_1["default"].createElement(favorites_1["default"], null))));
-};
-exports["default"] = AppWrapper;
+            content)));
+}
+exports["default"] = App;
