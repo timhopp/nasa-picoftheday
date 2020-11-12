@@ -57,9 +57,8 @@ exports.fetchCurrentPhoto = toolkit_1.createAsyncThunk("reducers/fetchCurrentPho
         switch (_a.label) {
             case 0:
                 apikey = process.env.API_KEY;
-                return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5"
-                    // `${process.env.API_KEY}`
-                    )];
+                return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=" +
+                        ("" + process.env.API_KEY))];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
@@ -71,9 +70,7 @@ exports.fetchPhotoByDate = toolkit_1.createAsyncThunk("reducers/fetchPhotoByDate
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5" + +"&date=" + formattedDate
-                // `${process.env.API_KEY}`
-                )];
+            case 0: return [4 /*yield*/, axios_1["default"].get("https://api.nasa.gov/planetary/apod?api_key=" + ("" + process.env.API_KEY) + "&date=" + formattedDate)];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response.data];
