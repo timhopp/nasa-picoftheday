@@ -26,10 +26,9 @@ const initialState: PhotoState = {
 export const fetchCurrentPhoto = createAsyncThunk(
   "reducers/fetchCurrentPhoto",
   async () => {
-    let apikey = process.env.API_KEY
      const response = await axios.get<Photo>(
-      "https://api.nasa.gov/planetary/apod?api_key=" + 
-      `${process.env.API_KEY}`
+      "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5"
+      //  `${process.env.API_KEY}`
     );
    return response.data;
   }
@@ -41,7 +40,7 @@ export const fetchPhotoByDate = createAsyncThunk(
   async (formattedDate : string) => {
        const response =
         await axios.get<Photo>(
-          "https://api.nasa.gov/planetary/apod?api_key=" + `${process.env.API_KEY}` + "&date=" + formattedDate
+          "https://api.nasa.gov/planetary/apodapi_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
         );
       return response.data;
     }
