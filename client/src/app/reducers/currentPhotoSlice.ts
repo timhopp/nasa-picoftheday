@@ -40,7 +40,7 @@ export const fetchPhotoByDate = createAsyncThunk(
   async (formattedDate : string) => {
        const response =
         await axios.get<Photo>(
-          "https://api.nasa.gov/planetary/apodapi_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
+          "https://api.nasa.gov/planetary/apod?api_key=gb8EyxhtZFQDFJtgS4FlKoumVutmPTkYStGt0MF5&date=" + formattedDate
         );
       return response.data;
     }
